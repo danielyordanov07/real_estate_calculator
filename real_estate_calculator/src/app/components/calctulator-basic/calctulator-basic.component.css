@@ -1,0 +1,12 @@
+
+.Input
+
+#calcButton1{
+  position: absolute;
+  height: 25%;
+  width: 10%;
+  text-align: center;
+}
+#calcButon1:hover{
+    cursor: pointer;
+}
