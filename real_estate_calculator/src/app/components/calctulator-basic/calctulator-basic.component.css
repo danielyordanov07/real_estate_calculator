@@ -1,12 +1,23 @@
+#Input-Main div{
+  width: 20%;
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+}
+#Input-Main div label{
+  height: auto;
+  width: 20%;
+}
+#Input-Main div input{
+  height: auto;
+  width: 70%;
+}
 
-.Input
-
-#calcButton1{
-  position: absolute;
-  height: 15%;
-  width: 10%;
+#CenteringDiv{
+  width: 100;
   text-align: center;
 }
-#calcButon1:hover{
-    cursor: pointer;
+#calcButtonMain{
+  width: 25%;
+  height: 4em;
+  text-align: center;
 }
