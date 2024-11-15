@@ -1,23 +1,23 @@
-#Input-Main div{
+main #Input-Main div{
   width: 20%;
   display: inline-grid;
   grid-template-columns: auto auto auto;
 }
-#Input-Main div label{
+main #Input-Main div label{
   height: auto;
-  width: 20%;
+  width: flex;
 }
-#Input-Main div input{
+main #Input-Main div input{
   height: auto;
   width: 70%;
 }
 
-#CenteringDiv{
+main #CenteringDiv{
   width: 100;
   text-align: center;
 }
-#calcButtonMain{
-  width: 25%;
-  height: 4em;
+main #calcButtonMain{
+  width: 20%;
+  height: 3em;
   text-align: center;
 }
