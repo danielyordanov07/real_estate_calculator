@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-calctulator-basic',
+  selector: 'calculator',
   standalone: true,
   imports: [],
-  templateUrl: './calctulator-basic.component.html',
-  styleUrl: './calctulator-basic.component.css'
+  templateUrl: './calculator.component.html',
+  styleUrl: './calculator.component.css'
 })
 export class CalctulatorBasicComponent {
 

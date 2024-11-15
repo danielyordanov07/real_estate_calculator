@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CalctulatorBasicComponent } from './components/calctulator-basic/calctulator-basic.component';
+import { CalctulatorBasicComponent } from './components/calculator/calculator.component';
 
 @Component({
   selector: 'app-root',
