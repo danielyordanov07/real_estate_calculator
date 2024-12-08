@@ -1,29 +1,29 @@
-<h1 id="CalcMainTitle">Calculator for real estate main </h1>
-<main>
-    <section id="Input-Main">
+<h1 id="CalcMainTitle">Calculator for real estate main</h1>
+<main ng-app="realEstateApp" ng-controller="MainInputController as MI">
+    <section>
         <div>
             <label for="Input1"> Input1 </label>
-            <input type="number" id="Input1">
+            <input type="number" ng-model="MI.value1">
         </div>
 
         <div id="Input2Div">
             <label for="Input2"> Input2 </label>
-            <input type="number" id="Input2">
+            <input type="number" ng-model="MI.value2">
         </div>
 
         <div id="Input3Div">
             <label for="Input3"> Input3 </label>
-            <input type="number" id="Input3">
+            <input type="number" ng-model="MI.value3">
         </div>
 
         <div id="Input4Div">
             <label for="Input4"> Input4 </label>
-            <input type="number" id="Input4">
+            <input type="number" ng-model="MI.value4">
         </div>
 
         <div id="Input5Div">
             <label for="Input5"> Input5 </label>
-            <input type="number" id="Input5">
+            <input type="number" ng-model="MI.value5">
         </div>
     </section>
     <br>

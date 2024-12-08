@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CalctulatorBasicComponent } from './components/calculator/calculator.component';
+import { MainCalculatorComponent } from './components/calculator/calculator.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CalctulatorBasicComponent],
+  imports: [RouterOutlet, MainCalculatorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

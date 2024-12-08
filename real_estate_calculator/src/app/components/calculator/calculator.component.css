@@ -1,17 +1,4 @@
-main #Input-Main div{
-  width: 20%;
-  display: inline-grid;
-  grid-template-columns: auto auto auto;
-}
-main #Input-Main div label{
-  height: auto;
-  width: flex;
-}
-main #Input-Main div input{
-  height: auto;
-  width: 70%;
-}
-
+/* calculate button */
 main #CenteringDiv{
   width: 100;
   text-align: center;
@@ -20,4 +7,19 @@ main #calcButtonMain{
   width: 20%;
   height: 3em;
   text-align: center;
+}
+
+/* inputs in main */
+main section div{
+  width: 20%;
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+}
+main section label{
+  height: auto;
+  width: flex;
+}
+main section input{
+  height: auto;
+  width: 70%;
 }
