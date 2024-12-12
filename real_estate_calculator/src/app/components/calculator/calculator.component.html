@@ -1,35 +1,50 @@
 <h1 id="CalcMainTitle">Calculator for real estate main</h1>
-<main ng-app="realEstateApp" ng-controller="MainInputController as MI">
+<main>
     <section>
         <div>
-            <label for="Input1"> Input1 </label>
-            <input type="number" ng-model="MI.value1">
-        </div>
+            <label for="Input1">Продажна цена</label>
+            <input id="Input1" type="number" [(ngModel)]="values.value1">
+          </div>
+      
+          <div>
+            <label for="Input2">Ремонт</label>
+            <input id="Input2" type="number" [(ngModel)]="values.value2">
+          </div>
+      
+          <div>
+            <label for="Input3">ГПР</label>
+            <input id="Input3" type="number" [(ngModel)]="values.value3">
+          </div>
+      
+          <div>
+            <label for="Input4">Години кредит</label>
+            <input id="Input4" type="number" [(ngModel)]="values.value4">
+          </div>
+      
+          <div>
+            <label for="Input5">Разходи по покупка</label>
+            <input id="Input5" type="number" [(ngModel)]="values.value5">
+          </div>
 
-        <div id="Input2Div">
-            <label for="Input2"> Input2 </label>
-            <input type="number" ng-model="MI.value2">
-        </div>
-
-        <div id="Input3Div">
-            <label for="Input3"> Input3 </label>
-            <input type="number" ng-model="MI.value3">
-        </div>
-
-        <div id="Input4Div">
-            <label for="Input4"> Input4 </label>
-            <input type="number" ng-model="MI.value4">
-        </div>
-
-        <div id="Input5Div">
-            <label for="Input5"> Input5 </label>
-            <input type="number" ng-model="MI.value5">
-        </div>
+          <div>
+            <label for="Input6">Кредит</label>
+            <input id="Input6" type="number" [(ngModel)]="values.value6">
+          </div>
+      
+          <div>
+            <label for="Input7">Вноска</label>
+            <input id="Input7" type="number" [(ngModel)]="values.value7">
+          </div>
+          
     </section>
     <br>
 
     <div id="CenteringDiv">
         <button id="calcButtonMain"> Calculate </button>
+    </div>
+
+    <div id="ResultDiv">
+        <h2>Result: {{ result }}</h2>
     </div>
     
 </main>

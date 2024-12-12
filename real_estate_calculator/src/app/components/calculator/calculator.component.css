@@ -11,9 +11,8 @@ main #calcButtonMain{
 
 /* inputs in main */
 main section div{
-  width: 20%;
   display: inline-grid;
-  grid-template-columns: auto auto auto;
+  margin-bottom : 1em;
 }
 main section label{
   height: auto;
