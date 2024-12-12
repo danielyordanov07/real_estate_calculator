@@ -18,10 +18,12 @@ export class MainCalculatorComponent {
   };
 
   results: { result1: number; result2: number; result3: number } = {
-    result1: this.values.value1 * 1.07,
-    result2: this.values.value1 * 1.07 + this.values.value2,
+    result1: 0,
+    result2: 0,
     result3: 0
   };
+
+  
 
 }
 
