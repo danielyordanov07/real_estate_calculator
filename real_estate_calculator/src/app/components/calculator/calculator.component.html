@@ -1,35 +1,36 @@
-<h1 id="CalcMainTitle">Calculator for real estate main</h1>
-<main>
-  <section>
-    <div>
-      <label for="Input1">Продажна цена</label>
-      <input id="Input1" type="number" [(ngModel)]="values.value1">
+<h1 id="CalcMainTitle" class="text-center my-4">Calculator for Real Estate Main</h1>
+<main class="container bg-light p-4 rounded shadow">
+  <section class="mb-4">
+    <div class="mb-3">
+      <label for="Input1" class="form-label">Sale Price</label>
+      <input id="Input1" type="number" [(ngModel)]="inputs.salePrice" class="form-control">
     </div>
 
-    <div>
-      <label for="Input2">Ремонт</label>
-      <input id="Input2" type="number" [(ngModel)]="values.value2">
+    <div class="mb-3">
+      <label for="Input2" class="form-label">Repair Costs</label>
+      <input id="Input2" type="number" [(ngModel)]="inputs.repairCosts" class="form-control">
     </div>
 
-    <div>
-      <label for="Input3">ГПР</label>
-      <input id="Input3" type="number" [(ngModel)]="values.value3">
+    <div class="mb-3">
+      <label for="Input3" class="form-label">APR%</label>
+      <input id="Input3" type="number" [(ngModel)]="inputs.apr" class="form-control">
     </div>
 
-    <div>
-      <label for="Input4">Години кредит</label>
-      <input id="Input4" type="number" [(ngModel)]="values.value4">
+    <div class="mb-3">
+      <label for="Input4" class="form-label">Loan Years</label>
+      <input id="Input4" type="number" [(ngModel)]="inputs.loanYears" class="form-control">
     </div>
-
   </section>
-  <br>
 
-  <div id="CenteringDiv">
-    <button id="calcButtonMain"> Calculate </button>
+  <div class="text-center">
+    <button id="calcButtonMain" (click)="calculateResults()" class="btn btn-primary w-100">Calculate</button>
   </div>
 
-  <div id="ResultDiv">
-    <h2>Result: {{ results }}</h2>
+  <div id="ResultDiv" class="mt-4 p-3 bg-secondary text-white rounded">
+    <h2>Purchase costs: {{ results.purchaseCosts }}</h2>
+    <h2>Credit: {{ results.credit }}</h2>
+    <h2>Monthly payment: {{ results.monthlyPayment }}</h2>
+    <h2>Monthly rate: {{ results.monthlyRate }}</h2>
+    <h2>Months for: {{ results.months }}</h2>
   </div>
-
 </main>
