@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MainCalculatorComponent } from './components/calculator/calculator.component';
 import { MainTabComponent } from "./components/main-tab/main-tab.component";
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, MainCalculatorComponent, MainTabComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  standalone: true,
+  imports: [RouterOutlet, MainTabComponent]
 })
 export class AppComponent {
-  title = 'real_estate_calculator';
+  title = 'Real Estate Calculator';
 }

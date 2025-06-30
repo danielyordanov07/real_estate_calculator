@@ -1,22 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MainCalculatorInputModel } from '../../models/main-calculator-input';
+import { MainCalculatorResultModel } from '../../models/main-calculator-result';
 
 @Component({
   selector: 'calculator',
-  standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './calculator.component.html',
-  styleUrl: './calculator.component.css'
+  styleUrl: './calculator.component.css',
+  standalone: true,
+  imports: [FormsModule, ReactiveFormsModule, CommonModule]
 })
-export class MainCalculatorComponent{
-  inputs: { salePrice: number; repairCosts: number; apr: number; loanYears: number } = {
+export class MainCalculatorComponent {
+  inputs: MainCalculatorInputModel = {
     salePrice: 0,
     repairCosts: 0,
     apr: 0,
     loanYears: 0
   };
-  results: { purchaseCosts: number; credit: number; monthlyRate: number; months: number, monthlyPayment: number } = {
+  results: MainCalculatorResultModel = {
     purchaseCosts: 0,
     credit: 0,
     monthlyRate: 0,
