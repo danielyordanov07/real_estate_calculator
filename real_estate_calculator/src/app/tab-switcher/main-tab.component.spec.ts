@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TabSwitcherComponent } from './tab-switcher.component';
+import { MainTabComponent } from './main-tab.component';
 
-describe('TabSwitcherComponent', () => {
-  let component: TabSwitcherComponent;
-  let fixture: ComponentFixture<TabSwitcherComponent>;
+describe('MainTabComponent', () => {
+  let component: MainTabComponent;
+  let fixture: ComponentFixture<MainTabComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TabSwitcherComponent]
+      imports: [MainTabComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TabSwitcherComponent);
+    fixture = TestBed.createComponent(MainTabComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

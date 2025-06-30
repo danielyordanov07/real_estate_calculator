@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MainCalculatorComponent } from './components/calculator/calculator.component';
-import { TabSwitcherComponent } from "./tab-switcher/tab-switcher.component";
+import { MainTabComponent } from "./tab-switcher/main-tab.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MainCalculatorComponent, TabSwitcherComponent],
+  imports: [RouterOutlet, MainCalculatorComponent, MainTabComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
