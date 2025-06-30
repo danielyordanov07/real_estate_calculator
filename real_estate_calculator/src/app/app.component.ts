@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MainCalculatorComponent } from './components/calculator/calculator.component';
-import { MainTabComponent } from "./tab-switcher/main-tab.component";
+import { MainTabComponent } from "./components/main-tab/main-tab.component";
 
 @Component({
   selector: 'app-root',

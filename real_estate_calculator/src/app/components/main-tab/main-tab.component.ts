@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MainCalculatorComponent } from '../components/calculator/calculator.component';
+import { MainCalculatorComponent } from '../calculator/calculator.component';
 
 @Component({
   selector: 'app-tab-switcher',
