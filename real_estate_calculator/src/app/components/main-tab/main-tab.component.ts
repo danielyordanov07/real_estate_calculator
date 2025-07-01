@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MainCalculatorComponent } from '../calculator/calculator.component';
+import { FlipCalculatorComponent } from '../flip-calculator/flip-calculator.component';
 
 @Component({
   selector: 'app-tab-switcher',
@@ -9,7 +10,8 @@ import { MainCalculatorComponent } from '../calculator/calculator.component';
   standalone: true,
   imports: [
     MatTabsModule,
-    MainCalculatorComponent
+    MainCalculatorComponent,
+    FlipCalculatorComponent
   ]
 })
 export class MainTabComponent {

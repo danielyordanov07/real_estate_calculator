@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainCalculatorInputModel } from '../../models/main-calculator-input';
 import { MainCalculatorResultModel } from '../../models/main-calculator-result';
+import { MatInputModule} from '@angular/material/input';
 
 @Component({
   selector: 'calculator',
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.css',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule]
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, MatInputModule]
 })
 export class MainCalculatorComponent {
   inputs: MainCalculatorInputModel = {
