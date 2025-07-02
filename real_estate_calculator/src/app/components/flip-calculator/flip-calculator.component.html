@@ -37,11 +37,11 @@
     </div>
 
     <div class="mb-3">
-      <label for="profitTaxInput" class="form-label">Profit Tax</label>
+      <label for="profitTaxInput" class="form-label">Profit Tax (%)</label>
       <input id="profitTaxInput" type="number"
         class="form-control"
         placeholder="0"
-        [(ngModel)]="inputs.profitTax"
+        [(ngModel)]="inputs.profitTaxPercent"
         (input)="calculateResults()">
     </div>
   </section>
@@ -53,6 +53,7 @@
   <div id="resultDiv" class="mt-4 p-3 bg-secondary text-white rounded">
     <h2>Taxes: {{ results.taxes | number : '1.2-2' }}</h2>
     <h2>Total Cost: {{ results.totalCost | number : '1.2-2' }}</h2>
+    <h2>Profit Tax: {{ results.profitTax | number : '1.2-2' }}</h2>
     <h2>Commission: {{ results.commission | number : '1.2-2' }}</h2>
     <h2>Profit (EUR): {{ results.profitEUR | number : '1.2-2' }}</h2>
     <h2>Profit (BGN): {{ results.profitBGN | number : '1.2-2' }}</h2>

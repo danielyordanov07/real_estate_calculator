@@ -3,5 +3,5 @@ export interface FlipCalculatorInputModel {
   repairCosts: number | null;
   salePrice: number | null;
   repaymentFee: number | null;
-  profitTax: number | null;
+  profitTaxPercent: number | null;
 }

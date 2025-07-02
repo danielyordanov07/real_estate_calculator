@@ -17,36 +17,53 @@ export class FlipCalculatorComponent {
     repairCosts: null,
     salePrice: null,
     repaymentFee: null,
-    profitTax: null
+    profitTaxPercent: null
   };
 
   public results: FlipCalculatorResultModel = {
     taxes: 0,
     totalCost: 0,
+    profitTax: 0,
     commission: 0,
     profitEUR: 0,
     profitBGN: 0
   };
- 
-  public calculateResults() {
-    const purchase = (this.inputs.purchasePrice ?? 0) || 0;
-    const repair = (this.inputs.repairCosts ?? 0) || 0;
-    const sale = (this.inputs.salePrice ?? 0) || 0;
-    const repay = (this.inputs.repaymentFee ?? 0) || 0;
-    const taxProfit = (this.inputs.profitTax ?? 0) || 0;
 
-    const taxes = purchase * 0.07;
-    const totalCost = purchase + repair + taxes;
-    const commission = sale * 0.02;
-    const profitEUR = sale - repay - taxProfit - totalCost - commission;
-    const profitBGN = profitEUR * 1.95583;
+  private readonly COMMISSION_PERCENT = 2;     // 2%
+  private readonly TAXES_PERCENT = 7;          // 7%
+  private readonly EUR_TO_BGN = 1.95583;       // Fixed exchange rate
+
+  public calculateResults() {
+    const purchasePrice = Number(this.inputs.purchasePrice) || 0;
+    const repairCosts = Number(this.inputs.repairCosts) || 0;
+    const salePrice = Number(this.inputs.salePrice) || 0;
+    const repaymentFee = Number(this.inputs.repaymentFee) || 0;
+    const profitTaxPercent = Number(this.inputs.profitTaxPercent) || 0;
+
+    // Такси = Покупна цена * 0.07
+    const taxes = purchasePrice * (this.TAXES_PERCENT / 100);
+
+    // Себестойност = Покупна цена + Ремонт + Такси
+    const totalCost = purchasePrice + repairCosts + taxes;
+
+    // Комисионна = Продажна цена * 0.02
+    const commission = salePrice * (this.COMMISSION_PERCENT / 100);
+
+    // Печалба - EUR = Продажна цена - Такса погасяване - Данък печалба - Себестойност - Комисионна
+    const grossProfit = salePrice - repaymentFee - totalCost - commission;
+    const profitTax = grossProfit > 0 ? grossProfit * (profitTaxPercent / 100) : 0;
+    const netProfitEUR = grossProfit - profitTax;
+
+    // Печалба - лв = Печалба EUR * 1.95583
+    const netProfitBGN = netProfitEUR * this.EUR_TO_BGN;
 
     this.results = {
       taxes,
       totalCost,
+      profitTax,
       commission,
-      profitEUR,
-      profitBGN
+      profitEUR: netProfitEUR,
+      profitBGN: netProfitBGN
     };
   }
 }
