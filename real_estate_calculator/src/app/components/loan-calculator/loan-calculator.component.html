@@ -1,0 +1,35 @@
+<div class="calculator-container container bg-light p-4 rounded shadow">
+  <section class="mb-4">
+    <div class="mb-3">
+      <label for="creditInput" class="form-label">Loan Amount</label>
+      <input id="creditInput" type="number"
+        class="form-control"
+        placeholder="0"
+        [(ngModel)]="inputs.credit"
+        (input)="calculateLoan()">
+    </div>
+
+    <div class="mb-3">
+      <label for="loanTermInput" class="form-label">Loan Term (years)</label>
+      <input id="loanTermInput" type="number"
+        class="form-control"
+        placeholder="0"
+        [(ngModel)]="inputs.loanTerm"
+        (input)="calculateLoan()">
+    </div>
+
+    <div class="mb-3">
+      <label for="aprInput" class="form-label">Annual Interest Rate (APR %)</label>
+      <input id="aprInput" type="number"
+        class="form-control"
+        placeholder="0"
+        [(ngModel)]="inputs.APR"
+        (input)="calculateLoan()">
+    </div>
+  </section>
+
+  <div class="results mt-4 p-3 bg-secondary text-white rounded" *ngIf="result.monthlyPayment !== null">
+    <h3>Monthly Payment: {{ result.monthlyPayment | number : '1.2-2' }}</h3>
+    <h3>Total Payment: {{ result.totalPayment | number : '1.2-2' }}</h3>
+  </div>
+</div>

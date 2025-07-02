@@ -1,5 +1,5 @@
 @media screen and (min-width: 1080px) {
-    #calculator-container {
+    .calculator-container {
         width: 60%;
     }
 }

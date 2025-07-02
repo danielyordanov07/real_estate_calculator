@@ -1,4 +1,4 @@
-<div id="calculator-container" class="container bg-light p-4 rounded shadow">
+<div class="calculator-container container bg-light p-4 rounded shadow">
   <section class="mb-4">
     <div class="mb-3">
       <label for="purchasePriceInput" class="form-label">Purchase Price</label>
@@ -46,15 +46,11 @@
     </div>
   </section>
 
-  <div class="text-center">
-    <button id="calculateButton" (click)="calculateResults()" class="btn btn-primary w-100">Calculate</button>
-  </div>
-
-  <div id="resultDiv" class="mt-4 p-3 bg-secondary text-white rounded">
-    <h2>Taxes: {{ results.taxes | number : '1.2-2' }}</h2>
-    <h2>Total Cost: {{ results.totalCost | number : '1.2-2' }}</h2>
-    <h2>Profit Tax: {{ results.profitTax | number : '1.2-2' }}</h2>
-    <h2>Commission: {{ results.commission | number : '1.2-2' }}</h2>
-    <h2>Profit (EUR): {{ results.profitEUR | number : '1.2-2' }}</h2>
-    <h2>Profit (BGN): {{ results.profitBGN | number : '1.2-2' }}</h2>
+  <div class="results mt-4 p-3 bg-secondary text-white rounded">
+    <h3>Taxes: {{ results.taxes | number : '1.2-2' }}</h3>
+    <h3>Total Cost: {{ results.totalCost | number : '1.2-2' }}</h3>
+    <h3>Profit Tax: {{ results.profitTax | number : '1.2-2' }}</h3>
+    <h3>Commission: {{ results.commission | number : '1.2-2' }}</h3>
+    <h3>Profit (EUR): {{ results.profitEUR | number : '1.2-2' }}</h3>
+    <h3>Profit (BGN): {{ results.profitBGN | number : '1.2-2' }}</h3>
   </div>

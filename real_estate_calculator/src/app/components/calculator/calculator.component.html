@@ -1,4 +1,4 @@
-<div id="calculator-container" class="container bg-light p-4 rounded shadow">
+<div class="calculator-container container bg-light p-4 rounded shadow">
   <section class="mb-4">
     <div class="mb-3">
       <label for="salePriceInput" class="form-label">Sale Price</label>
@@ -37,15 +37,11 @@
     </div>
   </section>
 
-  <div class="text-center">
-    <button id="calculateButton" (click)="calculateResults()" class="btn btn-primary w-100">Calculate</button>
-  </div>
-
-  <div id="resultDiv" class="mt-4 p-3 bg-secondary text-white rounded">
-    <h2>Purchase costs: {{ results.purchaseCosts | number : '1.2-2'}} </h2>
-    <h2>Credit: {{ results.credit| number : '1.2-2' }}</h2>
-    <h2>Monthly payment: {{ results.monthlyPayment | number : '1.2-2' }}</h2>
-    <h2>Months for: {{ results.months }}</h2>
+  <div class="results mt-4 p-3 bg-secondary text-white rounded">
+    <h3>Purchase costs: {{ results.purchaseCosts | number : '1.2-2'}} </h3>
+    <h3>Credit: {{ results.credit| number : '1.2-2' }}</h3>
+    <h3>Monthly payment: {{ results.monthlyPayment | number : '1.2-2' }}</h3>
+    <h3>Months for: {{ results.months }}</h3>
   </div>
 </div>
 

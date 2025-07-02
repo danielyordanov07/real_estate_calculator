@@ -5,7 +5,7 @@ import { MainTabComponent } from "./components/main-tab/main-tab.component";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.scss',
   standalone: true,
   imports: [RouterOutlet, MainTabComponent]
 })
