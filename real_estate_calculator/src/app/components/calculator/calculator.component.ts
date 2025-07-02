@@ -1,25 +1,24 @@
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MainCalculatorInputModel } from '../../models/main-calculator-input';
-import { MainCalculatorResultModel } from '../../models/main-calculator-result';
-import { MatInputModule} from '@angular/material/input';
+import { MainCalculatorInputModel } from '../../models/main-calculator-model/main-calculator-input';
+import { MainCalculatorResultModel } from '../../models/main-calculator-model/main-calculator-result';
 
 @Component({
   selector: 'calculator',
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.css',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, MatInputModule]
+  imports: [FormsModule, ReactiveFormsModule, CommonModule]
 })
 export class MainCalculatorComponent {
-  inputs: MainCalculatorInputModel = {
-    salePrice: 0,
-    repairCosts: 0,
-    apr: 0,
-    loanYears: 0
+  public inputs: MainCalculatorInputModel = {
+    salePrice: null,
+    repairCosts: null,
+    apr: null,
+    loanYears: null
   };
-  results: MainCalculatorResultModel = {
+  public results: MainCalculatorResultModel = {
     purchaseCosts: 0,
     credit: 0,
     monthlyRate: 0,
@@ -28,11 +27,11 @@ export class MainCalculatorComponent {
   };
 
   public calculateResults(): void {
-    this.results.purchaseCosts = this.inputs.salePrice * 1.07;
-    this.results.credit = this.results.purchaseCosts + this.inputs.repairCosts;
+    this.results.purchaseCosts = (this.inputs.salePrice ?? 0) * 1.07;
+    this.results.credit = this.results.purchaseCosts + (this.inputs.repairCosts ?? 0);
 
-    this.results.monthlyRate = (this.inputs.apr / 100) / 12;;
-    this.results.months = this.inputs.loanYears * 12;
+    this.results.monthlyRate = ((this.inputs.apr ?? 0) / 100) / 12;;
+    this.results.months = (this.inputs.loanYears ?? 0) * 12;
 
     if (this.results.monthlyRate > 0) {
       this.results.monthlyPayment = this.results.credit *

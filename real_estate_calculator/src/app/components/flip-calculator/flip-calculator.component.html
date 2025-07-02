@@ -1,1 +1,59 @@
-<p>flip-calculator works!</p>
+<div id="calculator-container" class="container bg-light p-4 rounded shadow">
+  <section class="mb-4">
+    <div class="mb-3">
+      <label for="purchasePriceInput" class="form-label">Purchase Price</label>
+      <input id="purchasePriceInput" type="number"
+        class="form-control"
+        placeholder="0"
+        [(ngModel)]="inputs.purchasePrice"
+        (input)="calculateResults()">
+    </div>
+
+    <div class="mb-3">
+      <label for="repairCostsInput" class="form-label">Repair Costs</label>
+      <input id="repairCostsInput" type="number"
+        class="form-control"
+        placeholder="0"
+        [(ngModel)]="inputs.repairCosts"
+        (input)="calculateResults()">
+    </div>
+
+    <div class="mb-3">
+      <label for="salePriceInput" class="form-label">Sale Price</label>
+      <input id="salePriceInput" type="number"
+        class="form-control"
+        placeholder="0"
+        [(ngModel)]="inputs.salePrice"
+        (input)="calculateResults()">
+    </div>
+
+    <div class="mb-3">
+      <label for="repaymentFeeInput" class="form-label">Repayment Fee</label>
+      <input id="repaymentFeeInput" type="number"
+        class="form-control"
+        placeholder="0"
+        [(ngModel)]="inputs.repaymentFee"
+        (input)="calculateResults()">
+    </div>
+
+    <div class="mb-3">
+      <label for="profitTaxInput" class="form-label">Profit Tax</label>
+      <input id="profitTaxInput" type="number"
+        class="form-control"
+        placeholder="0"
+        [(ngModel)]="inputs.profitTax"
+        (input)="calculateResults()">
+    </div>
+  </section>
+
+  <div class="text-center">
+    <button id="calculateButton" (click)="calculateResults()" class="btn btn-primary w-100">Calculate</button>
+  </div>
+
+  <div id="resultDiv" class="mt-4 p-3 bg-secondary text-white rounded">
+    <h2>Taxes: {{ results.taxes | number : '1.2-2' }}</h2>
+    <h2>Total Cost: {{ results.totalCost | number : '1.2-2' }}</h2>
+    <h2>Commission: {{ results.commission | number : '1.2-2' }}</h2>
+    <h2>Profit (EUR): {{ results.profitEUR | number : '1.2-2' }}</h2>
+    <h2>Profit (BGN): {{ results.profitBGN | number : '1.2-2' }}</h2>
+  </div>

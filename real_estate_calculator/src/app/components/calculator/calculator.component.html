@@ -3,31 +3,37 @@
     <div class="mb-3">
       <label for="salePriceInput" class="form-label">Sale Price</label>
       <input id="salePriceInput" type="number" 
-        class="form-control"
-        [(ngModel)]="inputs.salePrice"
-        (input)="calculateResults()"> 
+      class="form-control"
+      placeholder="0"
+      [(ngModel)]="inputs.salePrice"
+      (input)="calculateResults()"> 
     </div>
 
     <div class="mb-3">
       <label for="repairCostsInput" class="form-label">Repair Costs</label>
       <input id="repairCostsInput" type="number" 
         class="form-control"
+        placeholder="0"
         [(ngModel)]="inputs.repairCosts" 
         (input)="calculateResults()">
     </div>
 
     <div class="mb-3">
       <label for="aprInput" class="form-label">APR%</label>
-      <input id="aprInput" type="number" class="form-control" 
-      [(ngModel)]="inputs.apr"
-      (input)="calculateResults()">
+      <input id="aprInput" type="number" 
+        class="form-control"
+        placeholder="0" 
+        [(ngModel)]="inputs.apr"
+        (input)="calculateResults()">
     </div>
 
     <div class="mb-3">
       <label for="loanYearsInput" class="form-label">Loan Years</label>
-      <input id="loanYearsInput" type="number" class="form-control" 
-      [(ngModel)]="inputs.loanYears"
-      (input)="calculateResults()">
+      <input id="loanYearsInput" type="number" 
+        class="form-control" 
+        placeholder="0"
+        [(ngModel)]="inputs.loanYears"
+        (input)="calculateResults()">
     </div>
   </section>
 
@@ -42,3 +48,4 @@
     <h2>Months for: {{ results.months }}</h2>
   </div>
 </div>
+
