@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { translations, LanguageCode } from './custom-translations';
+import { DEFAULT_LANGUAGE } from '../consts';
 
 @Injectable({ providedIn: 'root' })
 export class TranslationInitService {
-  constructor (private translate: TranslateService) {}
+  constructor(private readonly _translate: TranslateService) { }
 
-  init(lang: LanguageCode) {
-    this.translate.setDefaultLang('bg');
+  public init(lang: LanguageCode): void {
+    this._translate.setDefaultLang(DEFAULT_LANGUAGE);
 
-    this.translate.use(lang).subscribe(() => {
+    this._translate.use(lang).subscribe(() => {
       const custom = translations[lang];
       if (custom) {
-        this.translate.setTranslation(lang, custom, true); // merge=true
+        this._translate.setTranslation(lang, custom, true); // merge=true
       }
     });
   }

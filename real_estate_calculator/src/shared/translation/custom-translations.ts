@@ -6,6 +6,3 @@ export const translations: Record<LanguageCode, object> = {
   bg: {
   }
 };
-
-const lang: LanguageCode = 'en';
-const data = translations[lang];
