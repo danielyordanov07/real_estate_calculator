@@ -1,7 +1,7 @@
 <div class="calculator-container container bg-light p-4 rounded shadow">
   <section class="mb-4">
     <div class="mb-3">
-      <label for="salePriceInput" class="form-label">Sale Price</label>
+      <label for="salePriceInput" class="form-label">{{ 'sale_price' | translate }}</label>
       <input id="salePriceInput" type="number" 
       class="form-control"
       placeholder="0"
@@ -10,7 +10,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="repairCostsInput" class="form-label">Repair Costs</label>
+      <label for="repairCostsInput" class="form-label">{{ 'repair_costs' | translate }}</label>
       <input id="repairCostsInput" type="number" 
         class="form-control"
         placeholder="0"
@@ -19,7 +19,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="aprInput" class="form-label">APR%</label>
+      <label for="aprInput" class="form-label">{{ 'apr_percent' | translate }}</label>
       <input id="aprInput" type="number" 
         class="form-control"
         placeholder="0" 
@@ -28,7 +28,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="loanYearsInput" class="form-label">Loan Years</label>
+      <label for="loanYearsInput" class="form-label">{{ 'loan_years' | translate }}</label>
       <input id="loanYearsInput" type="number" 
         class="form-control" 
         placeholder="0"
@@ -37,10 +37,16 @@
     </div>
   </section>
 
-  <div class="results mt-4 p-3 bg-secondary text-white rounded">
-    <h3>Purchase costs: {{ results.purchaseCosts | number : '1.2-2'}} </h3>
-    <h3>Credit: {{ results.credit| number : '1.2-2' }}</h3>
-    <h3>Monthly payment: {{ results.monthlyPayment | number : '1.2-2' }}</h3>
+  <div class="text-center">
+    <button id="calculateButton" (click)="calculateResults()" class="btn btn-primary w-100">
+      {{ 'calculate' | translate }}
+    </button>
+  </div>
+
+  <div id="resultDiv" class="mt-4 p-3 text-white rounded" style="background-color: #03a9f4;">
+    <h3>{{ 'purchase_costs' | translate }}: {{ results.purchaseCosts | number : '1.2-2'}} </h3>
+    <h3>{{ 'credit' | translate }}: {{ results.credit| number : '1.2-2' }}</h3>
+    <h3>{{ 'monthly_payment' | translate }}: {{ results.monthlyPayment | number : '1.2-2' }}</h3>
   </div>
 </div>
 

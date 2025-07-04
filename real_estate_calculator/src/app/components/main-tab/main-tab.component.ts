@@ -3,7 +3,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MainCalculatorComponent } from '../calculator/calculator.component';
 import { FlipCalculatorComponent } from '../flip-calculator/flip-calculator.component';
 import { LoanCalculatorComponent } from "../loan-calculator/loan-calculator.component";
-import { LanguageChangerComponent } from "../language-changer/language-changer.component";
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tab-switcher',
@@ -15,7 +15,7 @@ import { LanguageChangerComponent } from "../language-changer/language-changer.c
     MainCalculatorComponent,
     FlipCalculatorComponent,
     LoanCalculatorComponent,
-    LanguageChangerComponent
+    TranslatePipe
 ]
 })
 export class MainTabComponent {

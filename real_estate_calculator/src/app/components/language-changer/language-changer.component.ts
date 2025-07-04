@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-language-changer',
   standalone: true,
-  imports: [TranslateModule],
   templateUrl: './language-changer.component.html',
-  styleUrl: './language-changer.component.css'
+  styleUrl: './language-changer.component.css',
+  imports: [
+    TranslateModule,
+    TranslatePipe
+  ]
 })
 export class LanguageChangerComponent {
   constructor(private translate: TranslateService) {}

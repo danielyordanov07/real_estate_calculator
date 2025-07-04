@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MainTabComponent } from "./components/main-tab/main-tab.component";
 import { TranslationInitService } from '../shared/translation/translation-init.service';
-import { LanguageCode } from '../shared/translation/custom-translations';
 import { DEFAULT_LANGUAGE } from '../shared/consts';
 
 @Component({
@@ -10,7 +9,10 @@ import { DEFAULT_LANGUAGE } from '../shared/consts';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   standalone: true,
-  imports: [RouterOutlet, MainTabComponent]
+  imports: [
+    RouterOutlet, 
+    MainTabComponent 
+  ]
 })
 export class AppComponent {
   title = 'Real Estate Calculator';

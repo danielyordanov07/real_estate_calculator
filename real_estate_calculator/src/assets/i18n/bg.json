@@ -17,5 +17,10 @@
   "loan_amount": "Размер на кредита",
   "loan_term": "Срок на кредита",
   "annual_interest_rate": "Годишна лихва",
-  "total_payment": "Обща сума за плащане"
+  "total_payment": "Обща сума за плащане",
+  "calculate": "Изчисли",
+  "change_language": "Смени езика",
+  "flip": "Флип",
+  "loan": "Кредит",
+  "rent": "Наем"
 }

@@ -14,8 +14,13 @@
   "purchase_costs": "Purchase costs",
   "credit": "Credit",
   "monthly_payment": "Monthly payment",
-  "loan_amount": "Loan Amount translated",
+  "loan_amount": "Loan Amount",
   "loan_term": "Loan Term",
   "annual_interest_rate": "Annual Interest Rate",
-  "total_payment": "Total Payment"
+  "total_payment": "Total Payment",
+  "calculate": "Calculate",
+  "change_language": "Change Language",
+  "flip": "Flip",
+  "loan": "Loan",
+  "rent": "Rent"
 }

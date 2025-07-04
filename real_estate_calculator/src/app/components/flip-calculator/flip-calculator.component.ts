@@ -4,13 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlipCalculatorInputModel } from "../../models/flip-calculator-model/flip-calculator-inputs"
 import { FlipCalculatorResultModel } from '../../models/flip-calculator-model/flip-calculator-result';
 import { COMMISSION_PERCENT, EUR_TO_BGN, TAXES_PERCENT } from '../../../shared/consts';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'flip-calculator',
   templateUrl: './flip-calculator.component.html',
   styleUrl: './flip-calculator.component.css',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    ReactiveFormsModule, 
+    TranslatePipe]
 })
 export class FlipCalculatorComponent {
   public inputs: FlipCalculatorInputModel = {
