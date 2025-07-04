@@ -9,7 +9,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'loan-calculator',
   templateUrl: './loan-calculator.component.html',
-  styleUrl: './loan-calculator.component.css',
+  styleUrl: './loan-calculator.component.scss',
   standalone: true,
   imports: [
     CommonModule,
@@ -29,7 +29,11 @@ export class LoanCalculatorComponent {
     totalPayment: null
   };
 
+  public showResults: boolean = false;
+
   public calculateLoan(): void {
+    this.showResults = true;
+
     const monthlyRate = (this.inputs.apr ?? 0) / 100 / 12;
     const numberOfPayments = (this.inputs.loanTerm ?? 0) * 12;
 

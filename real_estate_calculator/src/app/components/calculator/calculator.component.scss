@@ -1,0 +1,13 @@
+.results {
+  background-color: white;
+
+  .result-label {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .calculator-container {
+    width: 60%;
+  }
+}

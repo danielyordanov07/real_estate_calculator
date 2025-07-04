@@ -9,11 +9,11 @@ import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'calculator',
   templateUrl: './calculator.component.html',
-  styleUrl: './calculator.component.css',
+  styleUrl: './calculator.component.scss',
   standalone: true,
   imports: [
-    FormsModule, 
-    ReactiveFormsModule, 
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     TranslatePipe
   ]
@@ -32,8 +32,11 @@ export class MainCalculatorComponent {
     months: 0,
     monthlyPayment: 0
   };
+  public showResults: boolean = false;
 
   public calculateResults(): void {
+    this.showResults = true;
+
     this.results.purchaseCosts = (this.inputs.salePrice ?? 0) * 1.07;
     this.results.credit = this.results.purchaseCosts + (this.inputs.repairCosts ?? 0);
 

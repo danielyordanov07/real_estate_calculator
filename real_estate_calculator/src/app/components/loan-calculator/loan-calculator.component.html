@@ -28,14 +28,8 @@
     </div>
   </section>
 
-  <div class="text-center">
-    <button id="calculateLoanButton" (click)="calculateLoan()" class="btn btn-primary w-100">
-      {{ 'calculate' | translate }}
-    </button>
-  </div>
-
-  <div class="results mt-4 p-3 text-white rounded" style="background-color: #03a9f4;" *ngIf="result.monthlyPayment !== null">
-    <h3>{{ 'monthly_payment' | translate }}: {{ result.monthlyPayment | number : '1.2-2' }}</h3>
-    <h3>{{ 'total_payment' | translate }}: {{ result.totalPayment | number : '1.2-2' }}</h3>
+  <div *ngIf="showResults" class="results mt-4 p-3 rounded">
+    <div class="result-label">{{ 'monthly_payment' | translate }}: {{ result.monthlyPayment | number : '1.2-2' }}</div>
+    <div class="result-label">{{ 'total_payment' | translate }}: {{ result.totalPayment | number : '1.2-2' }}</div>
   </div>
 </div>

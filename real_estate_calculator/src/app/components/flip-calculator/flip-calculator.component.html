@@ -46,18 +46,12 @@
     </div>
   </section>
 
-  <div class="text-center">
-    <button id="calculateButton" (click)="calculateResults()" class="btn btn-primary w-100">
-      {{ 'calculate' | translate }}
-    </button>
-  </div>
-
-  <div id="resultDiv" class="mt-4 p-3 text-white rounded" style="background-color: #03a9f4;">
-    <h3>{{ 'taxes' | translate }}: {{ results.taxes | number : '1.2-2' }}</h3>
-    <h3>{{ 'total_cost' | translate }}: {{ results.totalCost | number : '1.2-2' }}</h3>
-    <h3>{{ 'profit_tax' | translate }}: {{ results.profitTax | number : '1.2-2' }}</h3>
-    <h3>{{ 'commission' | translate }}: {{ results.commission | number : '1.2-2' }}</h3>
-    <h3>{{ 'profit_eur' | translate }}: {{ results.profitEUR | number : '1.2-2' }}</h3>
-    <h3>{{ 'profit_bgn' | translate }}: {{ results.profitBGN | number : '1.2-2' }}</h3>
+  <div *ngIf="showResults" class="results mt-4 p-3 rounded">
+    <div class="result-label">{{ 'taxes' | translate }}: {{ results.taxes | number : '1.2-2' }}</div>
+    <div class="result-label">{{ 'total_cost' | translate }}: {{ results.totalCost | number : '1.2-2' }}</div>
+    <div class="result-label">{{ 'profit_tax' | translate }}: {{ results.profitTax | number : '1.2-2' }}</div>
+    <div class="result-label">{{ 'commission' | translate }}: {{ results.commission | number : '1.2-2' }}</div>
+    <div class="result-label">{{ 'profit_eur' | translate }}: {{ results.profitEUR | number : '1.2-2' }}</div>
+    <div class="result-label">{{ 'profit_bgn' | translate }}: {{ results.profitBGN | number : '1.2-2' }}</div>
   </div>
 </div>
