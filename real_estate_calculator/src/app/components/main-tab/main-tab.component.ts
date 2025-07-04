@@ -3,6 +3,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MainCalculatorComponent } from '../calculator/calculator.component';
 import { FlipCalculatorComponent } from '../flip-calculator/flip-calculator.component';
 import { LoanCalculatorComponent } from "../loan-calculator/loan-calculator.component";
+import { LanguageChangerComponent } from "../language-changer/language-changer.component";
 
 @Component({
   selector: 'app-tab-switcher',
@@ -13,7 +14,8 @@ import { LoanCalculatorComponent } from "../loan-calculator/loan-calculator.comp
     MatTabsModule,
     MainCalculatorComponent,
     FlipCalculatorComponent,
-    LoanCalculatorComponent
+    LoanCalculatorComponent,
+    LanguageChangerComponent
 ]
 })
 export class MainTabComponent {

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MainTabComponent } from "./components/main-tab/main-tab.component";
+import { TranslationInitService } from '../shared/translation/translation-init.service';
+import { LanguageCode } from '../shared/translation/custom-translations';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +13,10 @@ import { MainTabComponent } from "./components/main-tab/main-tab.component";
 })
 export class AppComponent {
   title = 'Real Estate Calculator';
+
+  constructor(private readonly _translationInitService: TranslationInitService) {
+    const browserLang = navigator.language.split('-')[0] as LanguageCode; // 'en'
+    const lang: LanguageCode = ['en', 'bg'].includes(browserLang) ? browserLang : 'en' as LanguageCode;
+    this._translationInitService.init(lang);
+  }
 }
