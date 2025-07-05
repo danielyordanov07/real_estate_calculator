@@ -3,3 +3,8 @@
         width: 60%;
     }
 }
+
+div.separator {
+    width: 100%;
+    columns: 2;
+}
