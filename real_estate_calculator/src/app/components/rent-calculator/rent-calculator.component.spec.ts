@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MainCalculatorComponent } from './calculator.component';
+import { RentCalculatorComponent } from './rent-calculator.component';
 
-describe('MainCalculatorComponent', () => {
-  let component: MainCalculatorComponent;
-  let fixture: ComponentFixture<MainCalculatorComponent>;
+describe('RentCalculatorComponent', () => {
+  let component: RentCalculatorComponent;
+  let fixture: ComponentFixture<RentCalculatorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainCalculatorComponent]
+      imports: [RentCalculatorComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MainCalculatorComponent);
+    fixture = TestBed.createComponent(RentCalculatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

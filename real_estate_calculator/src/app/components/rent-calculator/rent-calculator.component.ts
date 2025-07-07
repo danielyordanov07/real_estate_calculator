@@ -7,9 +7,9 @@ import { calculateMonthlyPayment } from '../../../shared/utils';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
-  selector: 'calculator',
-  templateUrl: './calculator.component.html',
-  styleUrl: './calculator.component.scss',
+  selector: 'rent-calculator',
+  templateUrl: './rent-calculator.component.html',
+  styleUrl: './rent-calculator.component.scss',
   standalone: true,
   imports: [
     FormsModule,
@@ -18,7 +18,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     TranslatePipe
   ]
 })
-export class MainCalculatorComponent {
+export class RentCalculatorComponent {
   public inputs: MainCalculatorInputModel = {
     salePrice: null,
     repairCosts: null,
