@@ -9,12 +9,12 @@ import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'flip-calculator',
   templateUrl: './flip-calculator.component.html',
-  styleUrl: './flip-calculator.component.css',
+  styleUrl: './flip-calculator.component.scss',
   standalone: true,
   imports: [
-    CommonModule, 
-    FormsModule, 
-    ReactiveFormsModule, 
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     TranslatePipe]
 })
 export class FlipCalculatorComponent {
@@ -35,8 +35,11 @@ export class FlipCalculatorComponent {
     profitBGN: 0
   };
 
+  public showResults: boolean = false;
 
   public calculateResults(): void {
+    this.showResults = true;
+
     const purchasePrice = Number(this.inputs.purchasePrice) || 0;
     const repairCosts = Number(this.inputs.repairCosts) || 0;
     const salePrice = Number(this.inputs.salePrice) || 0;

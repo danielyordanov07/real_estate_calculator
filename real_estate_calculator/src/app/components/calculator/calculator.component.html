@@ -45,12 +45,12 @@
     </button>
   </div>
 
-  <div id="resultDiv" class="mt-4 p-3 text-white rounded" style="background-color: #03a9f4;">
+  <div *ngIf="showResults" class="results mt-4 p-3 rounded">
     <div class="separator">
-      <h3>{{ 'purchase_costs' | translate }}: <br> {{ results.purchaseCosts | number : '1.2-2'}} </h3>
-      <h3>{{ 'credit' | translate }}: <br> {{ results.credit| number : '1.2-2' }}</h3>
-      <h3>{{ 'monthly_payment' | translate }}: <br> {{ results.monthlyPayment | number : '1.2-2' }}</h3>
+      <div class="result-label">{{ 'purchase_costs' | translate }}: {{ results.purchaseCosts | number : '1.2-2'}} </div>
+      <div class="result-label">{{ 'credit' | translate }}: {{ results.credit| number : '1.2-2' }}</div>
+      <div class="result-label">{{ 'monthly_payment' | translate }}: {{ results.monthlyPayment | number : '1.2-2' }}</div>
     </div>
-  </div>    
-</div>
+  </div>
+</div>    
 
