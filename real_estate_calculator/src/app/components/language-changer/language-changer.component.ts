@@ -7,7 +7,7 @@ import { TranslatePipe } from '@ngx-translate/core';
   selector: 'app-language-changer',
   standalone: true,
   templateUrl: './language-changer.component.html',
-  styleUrl: './language-changer.component.css',
+  styleUrl: './language-changer.component.scss',
   imports: [
     TranslateModule,
     TranslatePipe

@@ -9,7 +9,7 @@ import { CalculatorComponent } from "../calculator/calculator.component";
 @Component({
   selector: 'app-tab-switcher',
   templateUrl: './main-tab.component.html',
-  styleUrl: './main-tab.component.css',
+  styleUrl: './main-tab.component.scss',
   standalone: true,
   imports: [
     MatTabsModule,
