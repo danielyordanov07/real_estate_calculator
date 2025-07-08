@@ -1,0 +1,27 @@
+.separator {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 0.5em;
+  column-gap: 1.5em;
+
+  > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 50%;
+  }
+}
+
+.results {
+  background-color: white;
+
+  .result-label {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .calculator-container {
+    width: 60%;
+  }
+}

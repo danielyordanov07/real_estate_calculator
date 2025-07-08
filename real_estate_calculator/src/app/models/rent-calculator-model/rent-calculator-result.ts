@@ -1,4 +1,4 @@
-export interface MainCalculatorResultModel {
+export interface RentCalculatorResultModel {
   purchaseCosts: number;
   credit: number;
   monthlyRate: number;

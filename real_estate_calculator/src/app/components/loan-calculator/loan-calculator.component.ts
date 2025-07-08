@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoanCalculatorInputModel } from '../../models/loan-calculator-model/loan-calculator-input';
 import { LoanCalculatorResultModel } from '../../models/loan-calculator-model/loan-calculator-result';
 import { calculateMonthlyPayment } from '../../../shared/utils';
-import { TranslatePipe } from '@ngx-translate/core';
+import { CalculatorComponent } from "../calculator/calculator.component";
 
 @Component({
   selector: 'loan-calculator',
@@ -15,8 +15,8 @@ import { TranslatePipe } from '@ngx-translate/core';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    TranslatePipe
-  ],
+    CalculatorComponent
+],
 })
 export class LoanCalculatorComponent {
   public inputs: LoanCalculatorInputModel = {
@@ -31,7 +31,7 @@ export class LoanCalculatorComponent {
 
   public showResults: boolean = false;
 
-  public calculateLoan(): void {
+  public calculateResults(value: number): void {
     this.showResults = true;
 
     const monthlyRate = (this.inputs.apr ?? 0) / 100 / 12;

@@ -1,56 +1,27 @@
-<div class="calculator-container container bg-light p-4 rounded shadow">
-  <section class="mb-4">
-    <div class="separator">
-      <div class="mb-3">
-        <label for="salePriceInput" class="form-label">{{ 'sale_price' | translate }}</label>
-        <input id="salePriceInput" type="number" 
-        class="form-control"
-        placeholder="0"
-        [(ngModel)]="inputs.salePrice"
-        (input)="calculateResults()"> 
-      </div>
-
-      <div class="mb-3">
-        <label for="repairCostsInput" class="form-label">{{ 'repair_costs' | translate }}</label>
-        <input id="repairCostsInput" type="number" 
-          class="form-control"
-          placeholder="0"
-          [(ngModel)]="inputs.repairCosts" 
-          (input)="calculateResults()">
-      </div>
-
-      <div class="mb-3">
-        <label for="aprInput" class="form-label">{{ 'apr_percent' | translate }}</label>
-        <input id="aprInput" type="number" 
-          class="form-control"
-          placeholder="0" 
-          [(ngModel)]="inputs.apr"
-          (input)="calculateResults()">
-      </div>
-
-      <div class="mb-3">
-        <label for="loanYearsInput" class="form-label">{{ 'loan_years' | translate }}</label>
-        <input id="loanYearsInput" type="number" 
-          class="form-control" 
-          placeholder="0"
-          [(ngModel)]="inputs.loanYears"
-          (input)="calculateResults()">
-      </div>
-    </div>  
-  </section>
-
-  <div class="text-center">
-    <button id="calculateButton" (click)="calculateResults()" class="btn btn-primary w-100">
-      {{ 'calculate' | translate }}
-    </button>
-  </div>
-
-  <div *ngIf="showResults" class="results mt-4 p-3 rounded">
-    <div class="separator">
-      <div class="result-label">{{ 'purchase_costs' | translate }}: {{ results.purchaseCosts | number : '1.2-2'}} </div>
-      <div class="result-label">{{ 'credit' | translate }}: {{ results.credit| number : '1.2-2' }}</div>
-      <div class="result-label">{{ 'monthly_payment' | translate }}: {{ results.monthlyPayment | number : '1.2-2' }}</div>
-    </div>
-  </div>
-</div>    
-
+<calculator 
+  [inputs]="[{
+      placeholder: null,
+      label: 'sale_price',
+    },{
+      placeholder: null,
+      label: 'repair_costs',
+    },{
+      placeholder: null,
+      label: 'apr_percent',
+    },{
+      placeholder: null,
+      label: 'loan_years',
+  }]"
+  [results]="[{
+      label: 'purchase_costs',
+      placeholder: null,
+      value: null,
+    },{
+      label: 'credit',
+      placeholder: null,
+    },{
+      label: 'monthly_payment',
+      placeholder: null,
+  }]"
+  (calculate)="calculateResults($event)"
+></calculator>

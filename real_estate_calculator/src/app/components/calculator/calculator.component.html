@@ -1,0 +1,17 @@
+<div class="calculator-container container bg-light p-4 rounded shadow">
+  <section class="separator mb-4">
+    <div class="mb-3" *ngFor="let input of inputs">
+      <label for="templateInput" class="template-label">{{ input.label | translate }}</label>
+      <input id="templateInput" type="number"
+        class="form-control"
+        [(ngModel)]="input.placeholder"
+        (input)="calculateResults(input.value || 0)">
+    </div>
+  </section>
+
+  <div *ngIf="showResults" class="results mt-4 p-3 rounded">
+    <div *ngFor="let result of results">
+        <div class="template-label">{{ result.label| translate }}  : {{ result.value | number : '1.2-2' }}</div> 
+    </div>
+  </div>
+</div>

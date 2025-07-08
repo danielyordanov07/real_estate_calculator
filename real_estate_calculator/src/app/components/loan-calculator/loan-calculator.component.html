@@ -1,35 +1,21 @@
-<div class="calculator-container container bg-light p-4 rounded shadow">
-  <section class="mb-4">
-    <div class="mb-3">
-      <label for="creditInput" class="form-label">{{ 'loan_amount' | translate }}</label>
-      <input id="creditInput" type="number"
-        class="form-control"
-        placeholder="0"
-        [(ngModel)]="inputs.credit"
-        (input)="calculateLoan()">
-    </div>
-
-    <div class="mb-3">
-      <label for="loanTermInput" class="form-label">{{ 'loan_term' | translate }}</label>
-      <input id="loanTermInput" type="number"
-        class="form-control"
-        placeholder="0"
-        [(ngModel)]="inputs.loanTerm"
-        (input)="calculateLoan()">
-    </div>
-
-    <div class="mb-3">
-      <label for="aprInput" class="form-label">{{ 'annual_interest_rate' | translate }}</label>
-      <input id="aprInput" type="number"
-        class="form-control"
-        placeholder="0"
-        [(ngModel)]="inputs.apr"
-        (input)="calculateLoan()">
-    </div>
-  </section>
-
-  <div *ngIf="showResults" class="results mt-4 p-3 rounded">
-    <div class="result-label">{{ 'monthly_payment' | translate }}: {{ result.monthlyPayment | number : '1.2-2' }}</div>
-    <div class="result-label">{{ 'total_payment' | translate }}: {{ result.totalPayment | number : '1.2-2' }}</div>
-  </div>
-</div>
+<calculator 
+  [inputs]="[{
+      placeholder: null,
+      label: 'loan_amount',
+    },{
+      placeholder: null,
+      label: 'loan_term',
+    },{
+      placeholder: null,
+      label: 'annual_interest_rate',
+  }]"
+  [results]="[{
+      label: 'monthly_payment',
+      placeholder: null,
+      value: null,
+    },{
+      label: 'total_payment',
+      placeholder: null,
+  }]"
+  (calculate)="calculateResults($event)"
+></calculator>

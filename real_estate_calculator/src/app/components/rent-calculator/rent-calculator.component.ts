@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MainCalculatorInputModel } from '../../models/main-calculator-model/main-calculator-input';
-import { MainCalculatorResultModel } from '../../models/main-calculator-model/main-calculator-result';
+import { RentCalculatorInputModel } from '../../models/rent-calculator-model/rent-calculator-input';
+import { RentCalculatorResultModel } from '../../models/rent-calculator-model/rent-calculator-result';
 import { calculateMonthlyPayment } from '../../../shared/utils';
-import { TranslatePipe } from '@ngx-translate/core';
+import { CalculatorComponent } from "../calculator/calculator.component";
 
 @Component({
   selector: 'rent-calculator',
@@ -15,17 +15,17 @@ import { TranslatePipe } from '@ngx-translate/core';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    TranslatePipe
-  ]
+    CalculatorComponent
+]
 })
 export class RentCalculatorComponent {
-  public inputs: MainCalculatorInputModel = {
+  public inputs: RentCalculatorInputModel = {
     salePrice: null,
     repairCosts: null,
     apr: null,
     loanYears: null
   };
-  public results: MainCalculatorResultModel = {
+  public results: RentCalculatorResultModel = {
     purchaseCosts: 0,
     credit: 0,
     monthlyRate: 0,
@@ -34,7 +34,8 @@ export class RentCalculatorComponent {
   };
   public showResults: boolean = false;
 
-  public calculateResults(): void {
+  public calculateResults(value: number): void {
+    console.log('Calculating results with value:', value);
     this.showResults = true;
 
     this.results.purchaseCosts = (this.inputs.salePrice ?? 0) * 1.07;

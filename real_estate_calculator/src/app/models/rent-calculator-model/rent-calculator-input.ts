@@ -1,4 +1,4 @@
-export interface MainCalculatorInputModel {
+export interface RentCalculatorInputModel {
   salePrice: number | null;
   repairCosts: number | null;
   apr: number | null;

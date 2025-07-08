@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlipCalculatorInputModel } from "../../models/flip-calculator-model/flip-calculator-inputs"
-import { FlipCalculatorResultModel } from '../../models/flip-calculator-model/flip-calculator-result';
+import { CalculatorComponent } from "../calculator/calculator.component";
 import { COMMISSION_PERCENT, EUR_TO_BGN, TAXES_PERCENT } from '../../../shared/consts';
-import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'flip-calculator',
@@ -15,10 +13,11 @@ import { TranslatePipe } from '@ngx-translate/core';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    TranslatePipe]
+    CalculatorComponent
+  ]
 })
 export class FlipCalculatorComponent {
-  public inputs: FlipCalculatorInputModel = {
+  public inputs = {
     purchasePrice: null,
     repairCosts: null,
     salePrice: null,
@@ -26,7 +25,7 @@ export class FlipCalculatorComponent {
     profitTaxPercent: null
   };
 
-  public results: FlipCalculatorResultModel = {
+  public results = {
     taxes: 0,
     totalCost: 0,
     profitTax: 0,
@@ -37,7 +36,7 @@ export class FlipCalculatorComponent {
 
   public showResults: boolean = false;
 
-  public calculateResults(): void {
+  public calculateResults(_: any): void {
     this.showResults = true;
 
     const purchasePrice = Number(this.inputs.purchasePrice) || 0;
