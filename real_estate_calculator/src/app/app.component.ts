@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { MainTabComponent } from "./components/main-tab/main-tab.component";
 import { TranslationInitService } from '../shared/translation/translation-init.service';
 import { DEFAULT_LANGUAGE } from '../shared/consts';
+import { HeaderComponent } from "./components/header/header.component";
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,10 @@ import { DEFAULT_LANGUAGE } from '../shared/consts';
   styleUrl: './app.component.scss',
   standalone: true,
   imports: [
-    RouterOutlet, 
-    MainTabComponent 
-  ]
+    RouterOutlet,
+    MainTabComponent,
+    HeaderComponent
+]
 })
 export class AppComponent {
   title = 'Real Estate Calculator';

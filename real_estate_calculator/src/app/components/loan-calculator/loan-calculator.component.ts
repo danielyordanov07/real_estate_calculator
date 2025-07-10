@@ -16,7 +16,7 @@ import { CalculatorComponent } from "../calculator/calculator.component";
     FormsModule,
     ReactiveFormsModule,
     CalculatorComponent
-],
+  ],
 })
 export class LoanCalculatorComponent {
   public inputs: LoanCalculatorInputModel = {

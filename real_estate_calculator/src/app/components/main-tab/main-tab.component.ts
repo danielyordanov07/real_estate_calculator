@@ -4,7 +4,6 @@ import { RentCalculatorComponent } from '../rent-calculator/rent-calculator.comp
 import { FlipCalculatorComponent } from '../flip-calculator/flip-calculator.component';
 import { LoanCalculatorComponent } from "../loan-calculator/loan-calculator.component";
 import { TranslatePipe } from '@ngx-translate/core';
-import { CalculatorComponent } from "../calculator/calculator.component";
 
 @Component({
   selector: 'app-tab-switcher',
@@ -17,7 +16,6 @@ import { CalculatorComponent } from "../calculator/calculator.component";
     FlipCalculatorComponent,
     LoanCalculatorComponent,
     TranslatePipe,
-    CalculatorComponent
 ]
 })
 export class MainTabComponent {

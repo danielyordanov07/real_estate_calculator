@@ -1,5 +1,4 @@
-<calculator 
-  [inputs]="[{
+<calculator [inputs]="[{
       placeholder: null,
       label: 'sale_price',
     },{
@@ -11,8 +10,7 @@
     },{
       placeholder: null,
       label: 'loan_years',
-  }]"
-  [results]="[{
+  }]" [results]="[{
       label: 'purchase_costs',
       placeholder: null,
       value: null,
@@ -22,6 +20,4 @@
     },{
       label: 'monthly_payment',
       placeholder: null,
-  }]"
-  (calculate)="calculateResults($event)"
-></calculator>
+  }]" (calculate)="calculateResults($event)"></calculator>

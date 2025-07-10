@@ -8,6 +8,7 @@ import { CalculatorResultModel } from '../../models/calculator-model/calculator-
 import { COMMISSION_PERCENT, EUR_TO_BGN, TAXES_PERCENT } from '../../../shared/consts';
 import { calculateMonthlyPayment } from '../../../shared/utils';
 
+import { LanguageChangerComponent } from "../language-changer/language-changer.component";
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
@@ -17,8 +18,9 @@ import { TranslatePipe } from '@ngx-translate/core';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    TranslatePipe    
-  ],
+    LanguageChangerComponent,
+    TranslatePipe
+],
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss'
 })

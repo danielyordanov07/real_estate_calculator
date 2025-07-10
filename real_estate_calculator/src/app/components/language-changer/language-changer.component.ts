@@ -1,24 +1,31 @@
 import { Component } from '@angular/core';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-language-changer',
+  selector: 'language-changer',
   standalone: true,
   templateUrl: './language-changer.component.html',
   styleUrl: './language-changer.component.scss',
   imports: [
     TranslateModule,
-    TranslatePipe
+    MatButtonToggleModule
   ]
 })
 export class LanguageChangerComponent {
-  constructor(private translate: TranslateService) {}
+  currentLang: string = 'bg';
 
-  toggleLang() {
-    const current = this.translate.currentLang || 'en';
-    const next = current === 'en' ? 'bg' : 'en';
-    this.translate.use(next);
+  constructor(private translate: TranslateService) {
+    this.currentLang = this.translate.currentLang || this.translate.getDefaultLang() || 'en';
+  }
+
+  toggleLang(value: string) {
+    if (!value || value === this.currentLang) {
+      return;
+    }
+    this.translate.use(value);
+    this.currentLang = value;
   }
 }

@@ -1,3 +1,9 @@
-<button (click)="toggleLang()">
-    {{ 'change_language' | translate }}
-</button>
+<mat-button-toggle-group
+  name="language"
+  aria-label="Language"
+  [value]="currentLang"
+  (valueChange)="toggleLang($event)"
+>
+  <mat-button-toggle value="en">en</mat-button-toggle>
+  <mat-button-toggle value="bg">бг</mat-button-toggle>
+</mat-button-toggle-group>
