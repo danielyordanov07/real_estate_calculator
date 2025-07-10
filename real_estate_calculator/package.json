@@ -6,7 +6,8 @@
     "start": "ng serve --port 4000",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng build --base-href=/real_estate_calculator/ && npx angular-cli-ghpages --dir=dist/real_estate_calculator/browser"
   },
   "private": true,
   "dependencies": {
