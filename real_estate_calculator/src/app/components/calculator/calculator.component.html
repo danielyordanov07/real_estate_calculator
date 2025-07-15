@@ -1,17 +1,22 @@
-<div class="calculator-container container bg-light p-4 rounded shadow">
-  <section class="separator mb-4">
-    <div class="mb-3" *ngFor="let input of inputs">
-      <label for="templateInput" class="template-label">{{ input.label | translate }}</label>
-      <input id="templateInput" type="number" class="form-control"
-        [placeholder]="input.placeholder"
-        [(ngModel)]="input.value"
-        (input)="calculateResults()">
-    </div>
-  </section>
-
-  <div *ngIf="showResults" class="results mt-4 p-3 rounded">
-    <div *ngFor="let result of results">
-      <div class="template-label">{{ result.label| translate }} : {{ result.value | number : '1.2-2' }}</div>
-    </div>
+<div class="calculator">
+  <div class="calculator-container container bg-light p-4 rounded shadow">
+    <section class="separator mb-4">
+      <div class="mb-3" *ngFor="let input of inputs">
+        <label for="templateInput" class="template-label">{{ input.label | translate }}</label>
+        <input id="templateInput" type="number" class="form-control" [placeholder]="input.placeholder"
+          [(ngModel)]="input.value" (input)="calculateResults()">
+      </div>
+    </section>
+    <section *ngIf="showResults" class="results mt-4 p-3 rounded">
+      <div *ngFor="let result of results">
+        <div class="template-label">{{ result.label| translate }} : {{ result.value | number : '1.2-2' }}</div>
+      </div>
+    </section>
   </div>
+
+  <div class="calculator-sidebar bg-light rounded shadow p-3">
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa optio sit illo praesentium labore tenetur,
+    possimus expedita cumque commodi natus ullam dolor, fugit, quam alias asperiores dolores animi ipsum
+    reprehenderit.
+    </div>
 </div>

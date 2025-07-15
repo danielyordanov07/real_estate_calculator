@@ -37,7 +37,7 @@ export class FlipCalculatorComponent {
     },
     {
       placeholder: 0,
-      label: 'profit_tax_percent',
+      label: 'profit_tax',
       value: null,
     }
   ];
@@ -78,7 +78,7 @@ export class FlipCalculatorComponent {
     const purchasePrice = Number(this.flipCalculatorInputProperties[0].value) || 0;
     const repairCosts = Number(this.flipCalculatorInputProperties[1].value) || 0;
     const salePrice = Number(this.flipCalculatorInputProperties[2].value) || 0;
-    const profitTaxPercent = Number(this.flipCalculatorInputProperties[3].value) || 0;
+    const profitTax = Number(this.flipCalculatorInputProperties[3].value) || 0;
 
     // taxes
     const taxes = purchasePrice * (TAXES_PERCENT / 100);
@@ -101,10 +101,6 @@ export class FlipCalculatorComponent {
     // gross profit
     const grossProfit = salePrice - repaymentFee - totalCost - commission;
 
-    // profit tax
-    const profitTax = grossProfit > 0 ? grossProfit * (profitTaxPercent / 100) : 0;
-    this.flipCalculatorOutputProperties[2].value = profitTax;
-
     // net profit EUR
     const netProfitEUR = grossProfit - profitTax;
     this.flipCalculatorOutputProperties[4].value = netProfitEUR;
@@ -112,5 +108,8 @@ export class FlipCalculatorComponent {
     // net profit BGN
     const netProfitBGN = netProfitEUR * EUR_TO_BGN;
     this.flipCalculatorOutputProperties[5].value = netProfitBGN;
+
+    // profit tax (already input by user)
+    this.flipCalculatorOutputProperties[2].value = profitTax;
   }
 }

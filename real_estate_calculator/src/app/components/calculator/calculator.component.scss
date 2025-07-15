@@ -1,3 +1,21 @@
+.calculator {
+  display: flex;
+  width: 100%;
+  height: 90vh;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.calculator-container {
+  width: 100%;
+}
+@media screen and (min-width: 1080px) {
+  .calculator-container {
+    width: 60%;
+  }
+}
+
 .separator {
   width: 100%;
   display: grid;
@@ -20,8 +38,8 @@
   }
 }
 
-@media screen and (min-width: 1080px) {
-  .calculator-container {
-    width: 60%;
-  }
+.calculator-sidebar {
+  width: 15%;
+  position: absolute;
+  right: 2em;
 }
