@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RentCalculatorInputModel } from '../../models/rent-calculator-model/rent-calculator-input';
-import { RentCalculatorResultModel } from '../../models/rent-calculator-model/rent-calculator-result';
 import { calculateMonthlyPayment } from '../../../shared/utils';
 import { CalculatorComponent } from "../calculator/calculator.component";
+import { CalculatorInputModel } from '../../models/calculator-model/calculator-input';
+import { CalculatorResultModel } from '../../models/calculator-model/calculator-result';
 
 @Component({
   selector: 'rent-calculator',
@@ -16,35 +16,58 @@ import { CalculatorComponent } from "../calculator/calculator.component";
     ReactiveFormsModule,
     CommonModule,
     CalculatorComponent
-]
+  ]
 })
 export class RentCalculatorComponent {
-  public inputs: RentCalculatorInputModel = {
-    salePrice: null,
-    repairCosts: null,
-    apr: null,
-    loanYears: null
-  };
-  public results: RentCalculatorResultModel = {
-    purchaseCosts: 0,
-    credit: 0,
-    monthlyRate: 0,
-    months: 0,
-    monthlyPayment: 0
-  };
-  public showResults: boolean = false;
 
-  public calculateResults(value: number): void {
-    console.log('Calculating results with value:', value);
-    this.showResults = true;
+  public rentCalculatorInputProperties: CalculatorInputModel[] = [{
+    placeholder: 0,
+    label: 'sale_price',
+    value: null,
+  }, {
+    placeholder: 0,
+    label: 'repair_costs',
+    value: null,
+  }, {
+    placeholder: 0,
+    label: 'apr_percent',
+    value: null,
+  }, {
+    placeholder: 0,
+    label: 'loan_years',
+    value: null,
+  }];
 
-    this.results.purchaseCosts = (this.inputs.salePrice ?? 0) * 1.07;
-    this.results.credit = this.results.purchaseCosts + (this.inputs.repairCosts ?? 0);
+  public rentCalculatorOutputProperties: CalculatorResultModel[] = [{
+    label: 'purchase_costs',
+    placeholder: null,
+    value: null,
+  }, {
+    label: 'credit',
+    placeholder: null,
+    value: null,
+  }, {
+    label: 'monthly_payment',
+    placeholder: null,
+    value: null,
+  }];
 
-    this.results.monthlyRate = ((this.inputs.apr ?? 0) / 100) / 12;;
-    this.results.months = (this.inputs.loanYears ?? 0) * 12;
+  public calculateResults(): void {
+    // this.results.purchaseCosts = (this.inputs.salePrice ?? 0) * 1.07;
+    // this.results.credit = this.results.purchaseCosts + (this.inputs.repairCosts ?? 0);
 
-    this.results.monthlyPayment =
-      calculateMonthlyPayment(this.results.credit, this.results.monthlyRate, this.results.months);
+    // this.results.monthlyRate = ((this.inputs.apr ?? 0) / 100) / 12;;
+    // this.results.months = (this.inputs.loanYears ?? 0) * 12;
+
+    // this.results.monthlyPayment =
+    //   calculateMonthlyPayment(this.results.credit, this.results.monthlyRate, this.results.months);
+
+    this.rentCalculatorOutputProperties[0].value = (this.rentCalculatorInputProperties[0].value ?? 0) * 1.07;
+    this.rentCalculatorOutputProperties[1].value = this.rentCalculatorOutputProperties[0].value + (this.rentCalculatorInputProperties[1].value ?? 0);
+
+    const monthlyRate = ((this.rentCalculatorInputProperties[2].value ?? 0) / 100) / 12;
+    const months = (this.rentCalculatorInputProperties[3].value ?? 0) * 12;
+    this.rentCalculatorOutputProperties[2].value =
+      calculateMonthlyPayment(this.rentCalculatorOutputProperties[1].value, monthlyRate, months);
   }
 }

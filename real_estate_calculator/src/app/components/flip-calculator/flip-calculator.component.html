@@ -1,38 +1,5 @@
 <calculator
-  [inputs]="[{
-      label: 'purchase_price',
-      placeholder: null
-    },{
-      label: 'repair_costs',
-      placeholder: null
-    },{
-      label: 'sale_price',
-      placeholder: null
-    },{
-      label: 'repayment_fee',
-      placeholder: null
-    },{
-      label: 'profit_tax',
-      placeholder: null
-  }]"
-  [results]="[{
-      label: 'taxes',
-      placeholder: null
-    },{
-      label: 'total_cost',
-      placeholder: null
-    },{
-      label: 'profit_tax',
-      placeholder: null
-    },{
-      label: 'commission',
-      placeholder: null
-    },{
-      label: 'profit_eur',
-      placeholder: null
-    },{
-      label: 'profit_bgn',
-      placeholder: null
-  }]"
-  (calculate)="calculateResults($event)"
+  [inputs]="flipCalculatorInputProperties"
+  [results]="flipCalculatorOutputProperties"
+  (calculate)="calculateResults()"
 ></calculator>

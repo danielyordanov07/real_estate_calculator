@@ -22,5 +22,7 @@
   "change_language": "Change Language",
   "flip": "Flip",
   "loan": "Loan",
-  "rent": "Rent"
+  "rent": "Rent",
+  "monthly_rate": "Monthly Rate",
+  "months": "Months"
 }

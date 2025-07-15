@@ -22,5 +22,7 @@
   "change_language": "Смени езика",
   "flip": "Флип",
   "loan": "Кредит",
-  "rent": "Наем"
+  "rent": "Наем",
+  "monthly_rate": "Месечна лихва",
+  "months": "Месеци"
 }

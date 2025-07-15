@@ -1,23 +1,5 @@
-<calculator [inputs]="[{
-      placeholder: null,
-      label: 'sale_price',
-    },{
-      placeholder: null,
-      label: 'repair_costs',
-    },{
-      placeholder: null,
-      label: 'apr_percent',
-    },{
-      placeholder: null,
-      label: 'loan_years',
-  }]" [results]="[{
-      label: 'purchase_costs',
-      placeholder: null,
-      value: null,
-    },{
-      label: 'credit',
-      placeholder: null,
-    },{
-      label: 'monthly_payment',
-      placeholder: null,
-  }]" (calculate)="calculateResults($event)"></calculator>
+<calculator 
+  [inputs]="rentCalculatorInputProperties"
+  [results]="rentCalculatorOutputProperties"
+  (calculate)="calculateResults()">
+</calculator>

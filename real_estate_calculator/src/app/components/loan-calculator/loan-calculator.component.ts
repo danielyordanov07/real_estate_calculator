@@ -61,5 +61,6 @@ export class LoanCalculatorComponent {
     const monthlyPayment = calculateMonthlyPayment(this.loanCalculatorInputProperties[0].value ?? 0, monthlyRate, numberOfPayments);
 
     this.loanCalculatorOutputProperties[0].value = monthlyPayment;
+    this.loanCalculatorOutputProperties[1].value = Number((monthlyPayment * numberOfPayments).toFixed(2));
   }
 }
