@@ -1,17 +1,5 @@
-<calculator [inputs]="[{
-      placeholder: null,
-      label: 'loan_amount',
-    },{
-      placeholder: null,
-      label: 'loan_term',
-    },{
-      placeholder: null,
-      label: 'annual_interest_rate',
-  }]" [results]="[{
-      label: 'monthly_payment',
-      placeholder: null,
-      value: null,
-    },{
-      label: 'total_payment',
-      placeholder: null,
-  }]" (calculate)="calculateResults($event)"></calculator>
+<calculator
+  [inputs]="loanCalculatorInputProperties"
+  [results]="loanCalculatorOutputProperties"
+  (calculate)="calculateResults()"
+></calculator>

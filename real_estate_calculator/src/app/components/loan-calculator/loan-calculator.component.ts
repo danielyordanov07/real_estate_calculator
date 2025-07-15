@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoanCalculatorInputModel } from '../../models/loan-calculator-model/loan-calculator-input';
-import { LoanCalculatorResultModel } from '../../models/loan-calculator-model/loan-calculator-result';
 import { calculateMonthlyPayment } from '../../../shared/utils';
 import { CalculatorComponent } from "../calculator/calculator.component";
+import { CalculatorInputModel } from '../../models/calculator-model/calculator-input';
+import { CalculatorResultModel } from '../../models/calculator-model/calculator-result';
 
 @Component({
   selector: 'loan-calculator',
@@ -19,29 +19,47 @@ import { CalculatorComponent } from "../calculator/calculator.component";
   ],
 })
 export class LoanCalculatorComponent {
-  public inputs: LoanCalculatorInputModel = {
-    credit: null,
-    loanTerm: null,
-    apr: null
-  };
-  public result: LoanCalculatorResultModel = {
-    monthlyPayment: null,
-    totalPayment: null
-  };
+  public loanCalculatorInputProperties: CalculatorInputModel[] = [{
+    placeholder: 0,
+    label: 'loan_amount',
+    value: null,
+  }, {
+    placeholder: 0,
+    label: 'loan_term',
+    value: null,
+  }, {
+    placeholder: 0,
+    label: 'annual_interest_rate',
+    value: null,
+  }];
+
+  public loanCalculatorOutputProperties: CalculatorResultModel[] = [{
+    label: 'monthly_payment',
+    placeholder: null,
+    value: null,
+  }, {
+    label: 'total_payment',
+    placeholder: null,
+  }];
 
   public showResults: boolean = false;
 
-  public calculateResults(value: number): void {
-    this.showResults = true;
+  public calculateResults(): void {
+    // const monthlyRate = (this.inputs.apr ?? 0) / 100 / 12;
+    // const numberOfPayments = (this.inputs.loanTerm ?? 0) * 12;
 
-    const monthlyRate = (this.inputs.apr ?? 0) / 100 / 12;
-    const numberOfPayments = (this.inputs.loanTerm ?? 0) * 12;
+    // // Monthly payment formula
+    // const monthlyPayment = calculateMonthlyPayment(this.inputs.credit ?? 0, monthlyRate, numberOfPayments);
+    // const totalPayment = monthlyPayment * numberOfPayments;
 
-    // Monthly payment formula
-    const monthlyPayment = calculateMonthlyPayment(this.inputs.credit ?? 0, monthlyRate, numberOfPayments);
-    const totalPayment = monthlyPayment * numberOfPayments;
+    // this.result.monthlyPayment = parseFloat(monthlyPayment.toFixed(2));
+    // this.result.totalPayment = parseFloat(totalPayment.toFixed(2));
 
-    this.result.monthlyPayment = parseFloat(monthlyPayment.toFixed(2));
-    this.result.totalPayment = parseFloat(totalPayment.toFixed(2));
+    const monthlyRate = (this.loanCalculatorInputProperties[2].value ?? 0) / 100 / 12;
+    const numberOfPayments = (this.loanCalculatorInputProperties[1].value ?? 0) * 12;
+
+    const monthlyPayment = calculateMonthlyPayment(this.loanCalculatorInputProperties[0].value ?? 0, monthlyRate, numberOfPayments);
+
+    this.loanCalculatorOutputProperties[0].value = monthlyPayment;
   }
 }

@@ -29,9 +29,9 @@ export class CalculatorComponent {
 
   public showResults: boolean = false;
   
-  public calculateResults(value: number): void {
+  public calculateResults(): void {
     this.showResults = true;
 
-    this.calculate.emit(value);
+    this.calculate.emit();
   }
 }
