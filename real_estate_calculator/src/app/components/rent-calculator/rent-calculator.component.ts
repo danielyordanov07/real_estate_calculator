@@ -22,7 +22,7 @@ export class RentCalculatorComponent {
 
   public rentCalculatorInputProperties: CalculatorInputModel[] = [{
     placeholder: 0,
-    label: 'sale_price',
+    label: 'purchase_price',
     value: null,
   }, {
     placeholder: 0,

@@ -37,11 +37,6 @@ export class FlipCalculatorComponent {
     },
     {
       placeholder: 0,
-      label: 'repayment_fee',
-      value: null,
-    },
-    {
-      placeholder: 0,
       label: 'profit_tax_percent',
       value: null,
     }
@@ -80,47 +75,42 @@ export class FlipCalculatorComponent {
   ];
 
   public calculateResults(): void {
-    // const purchasePrice = Number(this.inputs.purchasePrice) || 0;
-    // const repairCosts = Number(this.inputs.repairCosts) || 0;
-    // const salePrice = Number(this.inputs.salePrice) || 0;
-    // const repaymentFee = Number(this.inputs.repaymentFee) || 0;
-    // const profitTaxPercent = Number(this.inputs.profitTaxPercent) || 0;
-
-    // const taxes = purchasePrice * (TAXES_PERCENT / 100);
-    // const totalCost = purchasePrice + repairCosts + taxes;
-    // const commission = salePrice * (COMMISSION_PERCENT / 100);
-
-    // const grossProfit = salePrice - repaymentFee - totalCost - commission;
-    // const profitTax = grossProfit > 0 ? grossProfit * (profitTaxPercent / 100) : 0;
-    // const netProfitEUR = grossProfit - profitTax;
-
-    // const netProfitBGN = netProfitEUR * EUR_TO_BGN;
-
-    // this.results = {
-    //   taxes,
-    //   totalCost,
-    //   profitTax,
-    //   commission,
-    //   profitEUR: netProfitEUR,
-    //   profitBGN: netProfitBGN
-    // };
+    const purchasePrice = Number(this.flipCalculatorInputProperties[0].value) || 0;
+    const repairCosts = Number(this.flipCalculatorInputProperties[1].value) || 0;
+    const salePrice = Number(this.flipCalculatorInputProperties[2].value) || 0;
+    const profitTaxPercent = Number(this.flipCalculatorInputProperties[3].value) || 0;
 
     // taxes
-    this.flipCalculatorOutputProperties[0].value = (this.flipCalculatorInputProperties[0].value ?? 0) * (TAXES_PERCENT / 100);
+    const taxes = purchasePrice * (TAXES_PERCENT / 100);
+    this.flipCalculatorOutputProperties[0].value = taxes;
 
     // total cost
-    this.flipCalculatorOutputProperties[1].value = (this.flipCalculatorInputProperties[0].value ?? 0) + 
-      (this.flipCalculatorInputProperties[1].value ?? 0) + this.flipCalculatorOutputProperties[0].value;
+    const totalCost = purchasePrice + repairCosts + taxes;
+    this.flipCalculatorOutputProperties[1].value = totalCost;
 
     // commission
-    this.flipCalculatorOutputProperties[3].value = (this.flipCalculatorInputProperties[2].value ?? 0) * (COMMISSION_PERCENT / 100);
+    const commission = salePrice * (COMMISSION_PERCENT / 100);
+    this.flipCalculatorOutputProperties[3].value = commission;
+
+    // credit (purchase + repair + taxes)
+    const credit = totalCost;
+
+    // repayment fee (1% of credit)
+    const repaymentFee = credit * 0.01;
 
     // gross profit
-    // EUR
-    this.flipCalculatorOutputProperties[4].value = this.flipCalculatorOutputProperties[2].value ?? 0 > 0 
-      ? this.flipCalculatorOutputProperties[2].value ?? 0 * (this.flipCalculatorInputProperties[4].value ?? 0) / 100 : 0;
-    
-    // BGN
-    this.flipCalculatorOutputProperties[5].value = this.flipCalculatorOutputProperties[4].value * EUR_TO_BGN;
+    const grossProfit = salePrice - repaymentFee - totalCost - commission;
+
+    // profit tax
+    const profitTax = grossProfit > 0 ? grossProfit * (profitTaxPercent / 100) : 0;
+    this.flipCalculatorOutputProperties[2].value = profitTax;
+
+    // net profit EUR
+    const netProfitEUR = grossProfit - profitTax;
+    this.flipCalculatorOutputProperties[4].value = netProfitEUR;
+
+    // net profit BGN
+    const netProfitBGN = netProfitEUR * EUR_TO_BGN;
+    this.flipCalculatorOutputProperties[5].value = netProfitBGN;
   }
 }
