@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "danielyordanov07/real_estate_calculator",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
