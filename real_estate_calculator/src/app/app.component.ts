@@ -4,11 +4,12 @@ import { MainTabComponent } from "./components/main-tab/main-tab.component";
 import { TranslationInitService } from '../shared/translation/translation-init.service';
 import { DEFAULT_LANGUAGE } from '../shared/consts';
 import { HeaderComponent } from "./components/header/header.component";
+import { ExchangeRateService } from '../shared/services/exchange-rate.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrls: ['./app.component.scss'],
   standalone: true,
   imports: [
     RouterOutlet,
@@ -20,8 +21,10 @@ export class AppComponent {
   title = 'Real Estate Calculator';
 
   constructor(
-    private readonly _translationInitService: TranslationInitService
+    private readonly _translationInitService: TranslationInitService,
+    private exchangeRateService: ExchangeRateService
   ) {
     this._translationInitService.init(DEFAULT_LANGUAGE);
+    this.exchangeRateService.fetchAndSetEurToBgnRatePeriodically();
   }
 }

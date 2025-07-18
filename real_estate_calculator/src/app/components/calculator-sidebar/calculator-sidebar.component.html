@@ -1,7 +1,7 @@
 <div class="calculator-sidebar bg-light rounded shadow p-3">
     <h6 class="text-center">Constants</h6>
-    <div class="list-group-item" *ngFor="let const of _consts">
+    <div class="list-group-item" *ngFor="let const of consts">
         <label>{{ const.label | translate }}:</label>
-        <input type="text" class="form-control" [value]="const.value">
+        <input type="text" class="form-control" [value]="const.value" [disabled]="const.disabled">
     </div>
 </div>

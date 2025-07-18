@@ -1,6 +1,7 @@
 export interface CalcSidebarConstItem {
   label: string;
   value: number;
+  disabled: boolean;
 }
 
 export interface CalcSidebarConstModel {

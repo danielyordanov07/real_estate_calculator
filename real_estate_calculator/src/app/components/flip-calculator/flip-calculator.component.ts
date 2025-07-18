@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalculatorComponent } from "../calculator/calculator.component";
-import { COMMISSION_PERCENT, EUR_TO_BGN, TAXES_PERCENT } from '../../../shared/consts';
+import { COMMISSION_PERCENT, TAXES_PERCENT } from '../../../shared/consts';
 import { CalculatorInputModel } from '../../models/calculator-model/calculator-input';
 import { CalculatorResultModel } from '../../models/calculator-model/calculator-result';
+import { ExchangeRateService } from '../../../shared/services/exchange-rate.service';
 
 @Component({
   selector: 'flip-calculator',
@@ -15,10 +16,13 @@ import { CalculatorResultModel } from '../../models/calculator-model/calculator-
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    CalculatorComponent
+    CalculatorComponent,
   ]
 })
 export class FlipCalculatorComponent {
+  constructor(private exchangeRateService: ExchangeRateService) {
+    this.exchangeRateService.fetchAndSetEurToBgnRatePeriodically();
+  }
 
   public flipCalculatorInputProperties: CalculatorInputModel[] = [{
       placeholder: 0,
@@ -106,7 +110,7 @@ export class FlipCalculatorComponent {
     this.flipCalculatorOutputProperties[4].value = netProfitEUR;
 
     // net profit BGN
-    const netProfitBGN = netProfitEUR * EUR_TO_BGN;
+    const netProfitBGN = netProfitEUR * this.exchangeRateService.eurToBgn;
     this.flipCalculatorOutputProperties[5].value = netProfitBGN;
 
     // profit tax (already input by user)
