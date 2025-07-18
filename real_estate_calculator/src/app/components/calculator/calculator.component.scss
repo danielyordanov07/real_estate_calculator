@@ -1,18 +1,30 @@
+*:not(input):not(input *) {
+  margin: 0;
+  padding: 0;
+}
 .calculator {
-  display: flex;
   width: 100%;
-  height: 90vh;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-direction: row;
-}
 
-.calculator-container {
-  width: 100%;
-}
-@media screen and (min-width: 1080px) {
-  .calculator-container {
+  > :first-child {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  > :last-child {
     width: 60%;
+  }
+  
+  @media screen and (min-width: 1080px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    > :first-child {
+      margin-left: 15%;
+      width: 60%;
+    }
+    > :last-child {
+      width: 15%;
+    }
   }
 }
 
@@ -36,10 +48,4 @@
   .result-label {
     font-size: 1.2em;
   }
-}
-
-.calculator-sidebar {
-  width: 15%;
-  position: absolute;
-  right: 2em;
 }
