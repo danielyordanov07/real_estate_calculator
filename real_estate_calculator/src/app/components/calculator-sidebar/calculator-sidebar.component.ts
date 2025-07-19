@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-
-import { COMMISSION_PERCENT, TAXES_PERCENT, DEFAULT_LANGUAGE } from '../../../shared/consts';
-import { CalcSidebarConstItem } from '../../models/calc-sidebar-model';
-
 import { CommonModule } from '@angular/common';
+
+import { COMMISSION_PERCENT, TAXES_PERCENT } from '../../../shared/consts';
+import { CalcSidebarConstItem } from '../../models/calc-sidebar-model';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ExchangeRateService } from '../../../shared/services/exchange-rate.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'calculator-sidebar',
@@ -14,29 +14,38 @@ import { ExchangeRateService } from '../../../shared/services/exchange-rate.serv
   styleUrl: './calculator-sidebar.component.scss',
   imports: [
     CommonModule,
-    TranslatePipe
+    TranslatePipe,
+    MatButtonModule
   ]
 })
 export class CalculatorSidebarComponent {
-  public consts: CalcSidebarConstItem[];
+  public consts: { [key: string]: CalcSidebarConstItem };
+
+  public objectKeys = Object.keys;
 
   constructor(private exchangeRateService: ExchangeRateService) {
-    this.consts = [
-      {
+    this.consts = {
+      commissionPercent: {
         label: 'Commission Percent',
         value: COMMISSION_PERCENT,
         disabled: false
       },
-      {
+      taxesPercent: {
         label: 'Taxes Percent',
         value: TAXES_PERCENT,
         disabled: false
       },
-      {
+      eurToBgn: {
         label: 'EUR to BGN',
         value: this.exchangeRateService.eurToBgn,
         disabled: true
       }
-    ];
+    };
+  }
+
+  saveConstants(): void {
+    
+
+    console.log('Constants should be saved:', this.consts);
   }
 }
