@@ -9,6 +9,7 @@
   "taxes": "Taxes",
   "total_cost": "Total Cost",
   "commission": "Commission",
+  "sale_commission%": "Sale Commission (%)",
   "profit_eur": "Profit (EUR)",
   "profit_bgn": "Profit (BGN)",
   "apr_percent": "APR%",

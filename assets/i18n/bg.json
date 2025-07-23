@@ -9,6 +9,7 @@
   "taxes": "Данъци",
   "total_cost": "Обща стойност",
   "commission": "Комисионна",
+  "sale_commission%": "Комисионна продажба (%)",
   "profit_eur": "Печалба (EUR)",
   "profit_bgn": "Печалба (BGN)",
   "apr_percent": "ГПР (%)",
