@@ -28,8 +28,8 @@
   "monthly_rate": "Месечна лихва",
   "months": "Месеци",
   "constants": "Константи",
-  "save": "Запази",
-  "eur": "EUR",
-  "to": "към",
-  "bgn": "BGN"
+  "commission%": "Комисионна (%)",
+  "taxes%": "Данъци (%)",
+  "eur to bgn": "EUR към BGN",
+  "save": "Запази"
 }

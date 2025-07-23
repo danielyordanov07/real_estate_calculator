@@ -1,7 +1,7 @@
 <div class="calculator-sidebar bg-light rounded shadow p-3">
     <h6 class="text-center">{{ 'constants' | translate }}</h6>
     <div class="list-group-item" *ngFor="let key of objectKeys(consts)">
-        <label>{{ getLabel(key) | translate }}:</label>
+        <label>{{ consts[key].label | translate }}:</label>
         <input type="text" class="form-control" [value]="consts[key].value" [disabled]="consts[key].disabled">
     </div>
     <button mat-raised-button color="primary" class="w-100 mt-3" (click)="saveConstants()" [disabled]="true">
