@@ -17,8 +17,8 @@
   "credit": "Credit",
   "monthly_payment": "Monthly payment",
   "loan_amount": "Loan Amount",
-  "loan_term": "Loan Term",
-  "annual_interest_rate": "Annual Interest Rate",
+  "loan_term": "Loan Term (years)",
+  "annual_interest_rate": "Annual Interest Rate (%)",
   "total_payment": "Total Payment",
   "calculate": "Calculate",
   "change_language": "Change Language",
@@ -29,5 +29,7 @@
   "months": "Months",
   "constants": "Constants",
   "save": "Save",
-  "eur to bgn": "EUR to BGN"
+  "eur to bgn": "EUR to BGN",
+  "commission%": "Commission (%)",
+  "taxes%": "Taxes (%)"
 }
