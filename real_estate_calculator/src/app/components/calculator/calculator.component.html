@@ -1,7 +1,7 @@
 <div class="calculator">
-  <div class="calculator-container container bg-light p-4 rounded shadow">
+  <div class="calculator-container bg-light p-4 rounded shadow">
     <section class="separator">
-      <div class="input-container mb-3" *ngFor="let input of inputs">
+      <div class="input-container" *ngFor="let input of inputs">
         <label for="templateInput" class="template-label">{{ input.label | translate }}</label>
         <input type="number" class="templateInput form-control" [placeholder]="input.placeholder"
           [(ngModel)]="input.value" (input)="calculateResults()">

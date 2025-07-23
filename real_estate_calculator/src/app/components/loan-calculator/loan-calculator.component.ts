@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { calculateMonthlyPayment } from '../../../shared/utils';
 import { CalculatorComponent } from "../calculator/calculator.component";
 import { CalculatorInputModel } from '../../models/calculator-model/calculator-input';
 import { CalculatorResultModel } from '../../models/calculator-model/calculator-result';
+import { ConstantsService } from '../../../shared/services/constants.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'loan-calculator',
@@ -18,7 +20,7 @@ import { CalculatorResultModel } from '../../models/calculator-model/calculator-
     CalculatorComponent
   ],
 })
-export class LoanCalculatorComponent {
+export class LoanCalculatorComponent implements OnDestroy {
   public loanCalculatorInputProperties: CalculatorInputModel[] = [{
     placeholder: 0,
     label: 'loan_amount',
@@ -40,21 +42,23 @@ export class LoanCalculatorComponent {
   }, {
     label: 'total_payment',
     placeholder: null,
+    value: null,
   }];
 
   public showResults: boolean = false;
 
+  private constantsSub: Subscription;
+  public commissionPercent: number = 2;
+  public taxesPercent: number = 7;
+
+  constructor(private constantsService: ConstantsService) {
+    this.constantsSub = this.constantsService.state$.subscribe(state => {
+      this.commissionPercent = state.commissionPercent;
+      this.taxesPercent = state.taxesPercent;
+    });
+  }
+
   public calculateResults(): void {
-    // const monthlyRate = (this.inputs.apr ?? 0) / 100 / 12;
-    // const numberOfPayments = (this.inputs.loanTerm ?? 0) * 12;
-
-    // // Monthly payment formula
-    // const monthlyPayment = calculateMonthlyPayment(this.inputs.credit ?? 0, monthlyRate, numberOfPayments);
-    // const totalPayment = monthlyPayment * numberOfPayments;
-
-    // this.result.monthlyPayment = parseFloat(monthlyPayment.toFixed(2));
-    // this.result.totalPayment = parseFloat(totalPayment.toFixed(2));
-
     const monthlyRate = (this.loanCalculatorInputProperties[2].value ?? 0) / 100 / 12;
     const numberOfPayments = (this.loanCalculatorInputProperties[1].value ?? 0) * 12;
 
@@ -62,5 +66,9 @@ export class LoanCalculatorComponent {
 
     this.loanCalculatorOutputProperties[0].value = monthlyPayment;
     this.loanCalculatorOutputProperties[1].value = Number((monthlyPayment * numberOfPayments).toFixed(2));
+  }
+
+  ngOnDestroy() {
+    this.constantsSub.unsubscribe();
   }
 }

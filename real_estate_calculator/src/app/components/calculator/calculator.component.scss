@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
 }
+
 .calculator {
   width: 100%;
 
@@ -9,10 +10,11 @@
     width: 100%;
     margin-bottom: 1rem;
   }
+
   > :last-child {
     width: 60%;
   }
-  
+
   @media screen and (min-width: 1080px) {
     display: flex;
     flex-direction: row;
@@ -22,6 +24,7 @@
       margin-left: 15%;
       width: 60%;
     }
+
     > :last-child {
       width: 15%;
     }
@@ -45,19 +48,23 @@
 .input-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Ensures label is centered and input sticks to bottom */
-  min-height: 5.5em; /* Adjust based on your design */
+  justify-content: space-between;
+  /* Ensures label is centered and input sticks to bottom */
+  min-height: 5.5em;
+  /* Adjust based on your design */
 }
 
 .template-label {
   text-align: left;
   display: flex;
-  align-items: center; /* Vertically center the label content */
+  align-items: center;
+  /* Vertically center the label content */
   height: 100%;
 }
 
 .templateInput {
-  align-self: flex-end; /* Make sure input sticks to the bottom */
+  align-self: flex-end;
+  /* Make sure input sticks to the bottom */
 }
 
 
