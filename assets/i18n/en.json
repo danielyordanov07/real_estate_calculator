@@ -1,4 +1,5 @@
 {
+  "app_title": "Real Estate Calculator",
   "purchase_price": "Purchase Price",
   "repair_costs": "Repair Costs",
   "sale_price": "Sale Price",
@@ -25,5 +26,8 @@
   "loan": "Loan",
   "rent": "Rent",
   "monthly_rate": "Monthly Rate",
-  "months": "Months"
+  "months": "Months",
+  "constants": "Constants",
+  "save": "Save",
+  "eur to bgn": "EUR to BGN"
 }
