@@ -43,9 +43,23 @@
 }
 
 .input-container {
-  position: sticky;
-  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures label is centered and input sticks to bottom */
+  min-height: 5.5em; /* Adjust based on your design */
 }
+
+.template-label {
+  text-align: left;
+  display: flex;
+  align-items: center; /* Vertically center the label content */
+  height: 100%;
+}
+
+.templateInput {
+  align-self: flex-end; /* Make sure input sticks to the bottom */
+}
+
 
 .results {
   background-color: white;
