@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { calculateMonthlyPayment } from '../../../shared/utils';
@@ -6,7 +6,6 @@ import { CalculatorComponent } from "../calculator/calculator.component";
 import { CalculatorInputModel } from '../../models/calculator-model/calculator-input';
 import { CalculatorResultModel } from '../../models/calculator-model/calculator-result';
 import { ConstantsService } from '../../../shared/services/constants.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'loan-calculator',
@@ -18,9 +17,9 @@ import { Subscription } from 'rxjs';
     FormsModule,
     ReactiveFormsModule,
     CalculatorComponent
-  ],
+  ]
 })
-export class LoanCalculatorComponent implements OnDestroy {
+export class LoanCalculatorComponent implements OnInit {
   public loanCalculatorInputProperties: CalculatorInputModel[] = [{
     placeholder: 0,
     label: 'loan_amount',
@@ -47,14 +46,18 @@ export class LoanCalculatorComponent implements OnDestroy {
 
   public showResults: boolean = false;
 
-  private constantsSub: Subscription;
   public commissionPercent: number = 2;
   public taxesPercent: number = 7;
 
-  constructor(private constantsService: ConstantsService) {
-    this.constantsSub = this.constantsService.state$.subscribe(state => {
+  constructor(
+    private readonly _constantsService: ConstantsService
+  ) { }
+
+  public ngOnInit(): void {
+    this._constantsService.state$.subscribe(state => {
       this.commissionPercent = state.saleCommissionPercent;
       this.taxesPercent = state.taxesPercent;
+      this.calculateResults();
     });
   }
 
@@ -66,9 +69,5 @@ export class LoanCalculatorComponent implements OnDestroy {
 
     this.loanCalculatorOutputProperties[0].value = monthlyPayment;
     this.loanCalculatorOutputProperties[1].value = Number((monthlyPayment * numberOfPayments).toFixed(2));
-  }
-
-  ngOnDestroy() {
-    this.constantsSub.unsubscribe();
   }
 }

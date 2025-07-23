@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalculatorComponent } from "../calculator/calculator.component";
@@ -19,72 +19,74 @@ import { EUR_TO_BGN } from '../../../shared/consts';
     CalculatorComponent,
   ]
 })
-export class FlipCalculatorComponent {
+export class FlipCalculatorComponent implements OnInit {
   private _commissionPercent = 2;
   private _taxesPercent = 7;
 
+
+  public flipCalculatorInputProperties: CalculatorInputModel[] = [{
+    placeholder: 0,
+    label: 'purchase_price',
+    value: null,
+  },
+  {
+    placeholder: 0,
+    label: 'repair_costs',
+    value: null,
+  },
+  {
+    placeholder: 0,
+    label: 'sale_price',
+    value: null,
+  },
+  {
+    placeholder: 0,
+    label: 'profit_tax',
+    value: null,
+  }];
+
+  public flipCalculatorOutputProperties: CalculatorResultModel[] = [{
+    label: 'taxes',
+    placeholder: null,
+    value: null,
+  },
+  {
+    label: 'total_cost',
+    placeholder: null,
+    value: null,
+  },
+  {
+    label: 'profit_tax',
+    placeholder: null,
+    value: null,
+  },
+  {
+    label: 'commission',
+    placeholder: null,
+    value: null,
+  },
+  {
+    label: 'profit_eur',
+    placeholder: null,
+    value: null,
+  },
+  {
+    label: 'profit_bgn',
+    placeholder: null,
+    value: null,
+  }];
+
   constructor(
     private readonly _constantsService: ConstantsService
-  ) {
+  ) { }
+
+  public ngOnInit(): void {
     this._constantsService.state$.subscribe(state => {
       this._commissionPercent = state.saleCommissionPercent;
       this._taxesPercent = state.taxesPercent;
+      this.calculateResults();
     });
   }
-
-  public flipCalculatorInputProperties: CalculatorInputModel[] = [{
-      placeholder: 0,
-      label: 'purchase_price',
-      value: null,
-    },
-    {
-      placeholder: 0,
-      label: 'repair_costs',
-      value: null,
-    },
-    {
-      placeholder: 0,
-      label: 'sale_price',
-      value: null,
-    },
-    {
-      placeholder: 0,
-      label: 'profit_tax',
-      value: null,
-    }
-  ];
-
-  public flipCalculatorOutputProperties: CalculatorResultModel[] = [{
-      label: 'taxes',
-      placeholder: null,
-      value: null,
-    },
-    {
-      label: 'total_cost',
-      placeholder: null,
-      value: null,
-    },
-    {
-      label: 'profit_tax',
-      placeholder: null,
-      value: null,
-    },
-    {
-      label: 'commission',
-      placeholder: null,
-      value: null,
-    },
-    {
-      label: 'profit_eur',
-      placeholder: null,
-      value: null,
-    },
-    {
-      label: 'profit_bgn',
-      placeholder: null,
-      value: null,
-    }
-  ];
 
   public calculateResults(): void {
     const purchasePrice = Number(this.flipCalculatorInputProperties[0].value) || 0;

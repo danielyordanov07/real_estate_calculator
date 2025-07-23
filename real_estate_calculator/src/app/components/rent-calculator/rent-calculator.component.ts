@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { calculateMonthlyPayment } from '../../../shared/utils';
@@ -6,7 +6,6 @@ import { CalculatorComponent } from "../calculator/calculator.component";
 import { CalculatorInputModel } from '../../models/calculator-model/calculator-input';
 import { CalculatorResultModel } from '../../models/calculator-model/calculator-result';
 import { ConstantsService } from '../../../shared/services/constants.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'rent-calculator',
@@ -20,7 +19,7 @@ import { Subscription } from 'rxjs';
     CalculatorComponent
   ]
 })
-export class RentCalculatorComponent implements OnDestroy {
+export class RentCalculatorComponent implements OnInit {
   rentCalculatorInputProperties: CalculatorInputModel[] = [
     { placeholder: 0, label: 'purchase_price', value: null },
     { placeholder: 0, label: 'repair_costs', value: null },
@@ -36,12 +35,16 @@ export class RentCalculatorComponent implements OnDestroy {
 
   commissionPercent = 2;
   taxesPercent = 7;
-  private constantsSub: Subscription;
 
-  constructor(private constantsService: ConstantsService) {
-    this.constantsSub = this.constantsService.state$.subscribe(state => {
+  constructor(
+    private readonly _constantsService: ConstantsService
+  ) { }
+
+  public ngOnInit(): void {
+    this._constantsService.state$.subscribe(state => {
       this.commissionPercent = state.saleCommissionPercent;
       this.taxesPercent = state.taxesPercent;
+      this.calculateResults();
     });
   }
 
@@ -60,9 +63,5 @@ export class RentCalculatorComponent implements OnDestroy {
     this.rentCalculatorOutputProperties[0].value = purchaseCosts;
     this.rentCalculatorOutputProperties[1].value = credit;
     this.rentCalculatorOutputProperties[2].value = monthlyPayment;
-  }
-
-  ngOnDestroy() {
-    this.constantsSub.unsubscribe();
   }
 }

@@ -18,17 +18,18 @@ import { TranslatePipe } from '@ngx-translate/core';
     ReactiveFormsModule,
     TranslatePipe,
     CalculatorSidebarComponent
-],
+  ],
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss'
 })
 export class CalculatorComponent {
   @Input() public inputs: CalculatorInputModel[] = [];
   @Input() public results: CalculatorResultModel[] = [];
+
   @Output() public calculate = new EventEmitter<number>();
 
   public showResults: boolean = false;
-  
+
   public calculateResults(): void {
     this.showResults = true;
 
