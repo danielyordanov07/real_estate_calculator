@@ -13,8 +13,9 @@ language-changer {
     margin-right: 1rem;
 }
 
-@media (max-width: 500px) {
-    * {
-        display: none !important;
-    }
+
+.navbar-brand {
+    width: 100%;
+    overflow: hidden;
+    white-space: normal;
 }
