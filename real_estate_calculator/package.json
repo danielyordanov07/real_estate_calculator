@@ -5,9 +5,10 @@
     "ng": "ng",
     "start": "ng serve --port 4000",
     "build": "ng build",
+    "build-prod": "ng build --configuration production --base-href \"https://danielyordanov07.github.io/real_estate_calculator/\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build --base-href=/real_estate_calculator/ && npx angular-cli-ghpages --dir=dist/real_estate_calculator/browser"
+    "deploy": "ng build --configuration production --base-href \"https://danielyordanov07.github.io/real_estate_calculator/\" && npx angular-cli-ghpages --dir=dist/real_estate_calculator/browser"
   },
   "private": true,
   "dependencies": {

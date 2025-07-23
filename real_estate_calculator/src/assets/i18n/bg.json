@@ -1,4 +1,5 @@
 {
+  "app_title": "Калкулатор за недвижими имоти",
   "purchase_price": "Цена на покупка",
   "repair_costs": "Разходи за ремонт",
   "sale_price": "Цена на продажба",
@@ -10,14 +11,14 @@
   "commission": "Комисионна",
   "profit_eur": "Печалба (EUR)",
   "profit_bgn": "Печалба (BGN)",
-  "apr_percent": "ГПР%",
+  "apr_percent": "ГПР (%)",
   "loan_years": "Години на кредита",
   "purchase_costs": "Разходи за покупка",
   "credit": "Кредит",
   "monthly_payment": "Месечна вноска",
   "loan_amount": "Размер на кредита",
-  "loan_term": "Срок на кредита",
-  "annual_interest_rate": "Годишна лихва",
+  "loan_term": "Срок на кредита (г.)",
+  "annual_interest_rate": "Годишна лихва (%)",
   "total_payment": "Обща сума за плащане",
   "calculate": "Изчисли",
   "change_language": "Смени езика",
@@ -25,5 +26,10 @@
   "loan": "Кредит",
   "rent": "Наем",
   "monthly_rate": "Месечна лихва",
-  "months": "Месеци"
+  "months": "Месеци",
+  "constants": "Константи",
+  "save": "Запази",
+  "eur": "EUR",
+  "to": "към",
+  "bgn": "BGN"
 }

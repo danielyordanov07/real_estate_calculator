@@ -23,17 +23,21 @@ export class CalculatorSidebarComponent {
 
   public objectKeys = Object.keys;
 
+  public getLabel(key: string): string {
+    return this.consts[key].label;
+  }
+
   constructor(private exchangeRateService: ExchangeRateService) {
     this.consts = {
       commissionPercent: {
-        label: 'Commission Percent',
+        label: 'Commission (%)',
         value: COMMISSION_PERCENT,
-        disabled: false
+        disabled: true
       },
       taxesPercent: {
-        label: 'Taxes Percent',
+        label: 'Taxes (%)',
         value: TAXES_PERCENT,
-        disabled: false
+        disabled: true
       },
       eurToBgn: {
         label: 'EUR to BGN',
