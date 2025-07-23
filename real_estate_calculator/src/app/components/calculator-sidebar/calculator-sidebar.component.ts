@@ -3,13 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { COMMISSION_PERCENT, TAXES_PERCENT } from '../../../shared/consts';
+import { COMMISSION_PERCENT, EUR_TO_BGN, TAXES_PERCENT } from '../../../shared/consts';
 import { CalcSidebarConstItem } from '../../models/calc-sidebar-model';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ExchangeRateService } from '../../../shared/services/exchange-rate.service';
 import { MatButtonModule } from '@angular/material/button';
 import { ConstantsService } from '../../../shared/services/constants.service';
-import { CalcSidebarState } from '../../models/service-models/calc-sidebar-state.model';
 
 @Component({
   selector: 'calculator-sidebar',
@@ -31,12 +29,10 @@ export class CalculatorSidebarComponent implements OnInit, OnDestroy {
 
   public objectKeys = Object.keys;
 
-  state!: CalcSidebarState;
-  private stateSub!: Subscription;
+  private _stateSub!: Subscription;
 
   constructor(
-    private exchangeRateService: ExchangeRateService,
-    private constantsService: ConstantsService // inject singleton
+    private readonly _constantsService: ConstantsService
   ) {
     this.consts = {
       commissionPercent: {
@@ -51,36 +47,35 @@ export class CalculatorSidebarComponent implements OnInit, OnDestroy {
       },
       eurToBgn: {
         label: 'eur to bgn',
-        value: this.exchangeRateService.eurToBgn,
+        value: EUR_TO_BGN,
         disabled: true
       }
     };
   }
 
-  ngOnInit() {
-    this.stateSub = this.constantsService.state$.subscribe(state => {
-      this.consts['commissionPercent'].value = state.commissionPercent;
+  public ngOnInit(): void {
+    this._stateSub = this._constantsService.state$.subscribe(state => {
+      this.consts['commissionPercent'].value = state.saleCommissionPercent;
       this.consts['taxesPercent'].value = state.taxesPercent;
     });
   }
 
-  ngOnDestroy() {
-    this.stateSub?.unsubscribe();
+  public ngOnDestroy(): void {
+    this._stateSub?.unsubscribe();
   }
 
-  saveConstants(): void {
-    this.constantsService.updateState({
-      commissionPercent: this.consts['commissionPercent'].value,
+  public saveConstants(): void {
+    this._constantsService.updateState({
+      saleCommissionPercent: this.consts['commissionPercent'].value,
       taxesPercent: this.consts['taxesPercent'].value,
     });
-    console.log('Constants should be saved:', this.consts);
   }
 
-  onCommissionChange(value: number) {
-    this.constantsService.updateState({ commissionPercent: value });
+  public onCommissionChange(value: number): void {
+    this._constantsService.updateState({ saleCommissionPercent: value });
   }
 
-  onTaxesChange(value: number) {
-    this.constantsService.updateState({ taxesPercent: value });
+  public onTaxesChange(value: number): void {
+    this._constantsService.updateState({ taxesPercent: value });
   }
 }

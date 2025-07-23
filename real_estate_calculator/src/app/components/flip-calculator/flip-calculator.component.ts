@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalculatorComponent } from "../calculator/calculator.component";
 import { CalculatorInputModel } from '../../models/calculator-model/calculator-input';
 import { CalculatorResultModel } from '../../models/calculator-model/calculator-result';
-import { ExchangeRateService } from '../../../shared/services/exchange-rate.service';
 import { ConstantsService } from '../../../shared/services/constants.service';
+import { EUR_TO_BGN } from '../../../shared/consts';
 
 @Component({
   selector: 'flip-calculator',
@@ -20,17 +20,15 @@ import { ConstantsService } from '../../../shared/services/constants.service';
   ]
 })
 export class FlipCalculatorComponent {
-  commissionPercent = 2;
-  taxesPercent = 7;
+  private _commissionPercent = 2;
+  private _taxesPercent = 7;
 
   constructor(
-    private exchangeRateService: ExchangeRateService,
-    private constantsService: ConstantsService
+    private readonly _constantsService: ConstantsService
   ) {
-    this.exchangeRateService.fetchAndSetEurToBgnRatePeriodically();
-    this.constantsService.state$.subscribe(state => {
-      this.commissionPercent = state.commissionPercent;
-      this.taxesPercent = state.taxesPercent;
+    this._constantsService.state$.subscribe(state => {
+      this._commissionPercent = state.saleCommissionPercent;
+      this._taxesPercent = state.taxesPercent;
     });
   }
 
@@ -95,7 +93,7 @@ export class FlipCalculatorComponent {
     const profitTax = Number(this.flipCalculatorInputProperties[3].value) || 0;
 
     // taxes
-    const taxes = purchasePrice * (this.taxesPercent / 100);
+    const taxes = purchasePrice * (this._taxesPercent / 100);
     this.flipCalculatorOutputProperties[0].value = taxes;
 
     // total cost
@@ -103,7 +101,7 @@ export class FlipCalculatorComponent {
     this.flipCalculatorOutputProperties[1].value = totalCost;
 
     // commission
-    const commission = salePrice * (this.commissionPercent / 100);
+    const commission = salePrice * (this._commissionPercent / 100);
     this.flipCalculatorOutputProperties[3].value = commission;
 
     // credit (purchase + repair + taxes)
@@ -120,7 +118,7 @@ export class FlipCalculatorComponent {
     this.flipCalculatorOutputProperties[4].value = netProfitEUR;
 
     // net profit BGN
-    const netProfitBGN = netProfitEUR * this.exchangeRateService.eurToBgn;
+    const netProfitBGN = netProfitEUR * EUR_TO_BGN;
     this.flipCalculatorOutputProperties[5].value = netProfitBGN;
 
     // profit tax (already input by user)

@@ -1,4 +1,4 @@
 export interface CalcSidebarState {
-  commissionPercent: number;
+  saleCommissionPercent: number;
   taxesPercent: number;
 }

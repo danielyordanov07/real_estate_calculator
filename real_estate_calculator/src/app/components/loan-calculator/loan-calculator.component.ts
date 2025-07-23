@@ -53,7 +53,7 @@ export class LoanCalculatorComponent implements OnDestroy {
 
   constructor(private constantsService: ConstantsService) {
     this.constantsSub = this.constantsService.state$.subscribe(state => {
-      this.commissionPercent = state.commissionPercent;
+      this.commissionPercent = state.saleCommissionPercent;
       this.taxesPercent = state.taxesPercent;
     });
   }
