@@ -1,9 +1,9 @@
 {
   "app_title": "Калкулатор за недвижими имоти",
-  "purchase_price": "Цена на покупка",
+  "purchase_price": "Покупна цена",
   "repair_costs": "Разходи за ремонт",
-  "sale_price": "Цена на продажба",
-  "repayment_fee": "Такса за погасяване",
+  "sale_price": "Продажна цена",
+  "repayment_fee": "Такса погасяване",
   "profit_tax": "Данък върху печалбата",
   "profit_tax_percent": "Данък върху печалбата %",
   "taxes": "Данъци",
